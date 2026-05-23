@@ -1,0 +1,557 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CajuCultura</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      background: #F47C20;
+      overflow: hidden;
+    }
+
+    /* ── padrão de cajus no fundo ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        radial-gradient(circle, rgba(255,255,255,0.07) 1px, transparent 1px);
+      background-size: 40px 40px;
+      pointer-events: none;
+    }
+
+    /* ── cajus SVG espalhados ── */
+    .caju-bg {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .caju-bg span {
+      position: absolute;
+      font-size: 3.5rem;
+      opacity: 0.18;
+      transform-origin: center;
+      animation: floatCaju 8s ease-in-out infinite;
+    }
+
+    @keyframes floatCaju {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50%       { transform: translateY(-12px) rotate(6deg); }
+    }
+
+    /* ── layout dois painéis ── */
+    .page {
+      display: flex;
+      width: 100%;
+      min-height: 100vh;
+    }
+
+    /* ── painel esquerdo: logo ── */
+    .left-panel {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 3rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .logo-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .logo-icon {
+      font-size: 5rem;
+      filter: drop-shadow(0 4px 12px rgba(0,0,0,0.25));
+    }
+
+    .logo-text {
+      font-size: 3rem;
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: -1px;
+      text-shadow: 0 3px 12px rgba(0,0,0,0.2);
+    }
+
+    .logo-sub {
+      font-size: 1rem;
+      color: rgba(255,255,255,0.85);
+      font-weight: 400;
+      margin-top: -0.5rem;
+      letter-spacing: 0.5px;
+    }
+
+    /* ── painel direito: card ── */
+    .right-panel {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 24px;
+      padding: 2.5rem 2rem;
+      width: 380px;
+      box-shadow: 0 24px 60px rgba(0,0,0,0.18);
+    }
+
+    /* ── abas de perfil ── */
+    .tabs {
+      display: flex;
+      background: #F5F5F5;
+      border-radius: 12px;
+      padding: 4px;
+      margin-bottom: 2rem;
+      gap: 2px;
+    }
+
+    .tab {
+      flex: 1;
+      text-align: center;
+      padding: 0.55rem 0.5rem;
+      border-radius: 9px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+      background: transparent;
+      color: #888;
+      transition: all 0.2s;
+    }
+
+    .tab.active {
+      background: #fff;
+      color: #F47C20;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    /* ── título e link ── */
+    .card-title {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: #1a1a1a;
+      margin-bottom: 0.3rem;
+    }
+
+    .card-signup {
+      font-size: 0.82rem;
+      color: #888;
+      margin-bottom: 1.8rem;
+    }
+
+    .card-signup a {
+      color: #F47C20;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .card-signup a:hover { text-decoration: underline; }
+
+    /* ── campos ── */
+    .field {
+      margin-bottom: 1rem;
+    }
+
+    .field label {
+      display: block;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: #444;
+      margin-bottom: 0.4rem;
+    }
+
+    .field input {
+      width: 100%;
+      padding: 0.8rem 1rem;
+      border: 1.5px solid #E0E0E0;
+      border-radius: 10px;
+      font-size: 0.95rem;
+      font-family: 'Poppins', sans-serif;
+      outline: none;
+      transition: border-color 0.2s;
+      background: #FAFAFA;
+      color: #1a1a1a;
+    }
+
+    .field input:focus {
+      border-color: #F47C20;
+      background: #fff;
+    }
+
+    /* ── botão continue ── */
+    .btn-continue {
+      width: 100%;
+      padding: 0.9rem;
+      background: #F47C20;
+      color: #fff;
+      border: none;
+      border-radius: 12px;
+      font-size: 1rem;
+      font-weight: 700;
+      font-family: 'Poppins', sans-serif;
+      cursor: pointer;
+      margin-top: 0.5rem;
+      transition: background 0.2s, transform 0.1s;
+      letter-spacing: 0.3px;
+    }
+
+    .btn-continue:hover  { background: #D96A12; }
+    .btn-continue:active { transform: scale(0.98); }
+
+    /* ── campo extra só para "Professor" (ID) ── */
+    .field-id { display: none; }
+
+    /* ── separador ── */
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      margin: 1.2rem 0;
+      color: #ccc;
+      font-size: 0.8rem;
+    }
+    .divider::before,
+    .divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: #E8E8E8;
+    }
+
+    /* ── mensagem de erro/sucesso ── */
+    .msg {
+      font-size: 0.82rem;
+      padding: 0.6rem 0.9rem;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+      display: none;
+    }
+    .msg.erro  { background: #FDECEA; color: #C62828; display: block; }
+    .msg.ok    { background: #E8F5E9; color: #2E7D32; display: block; }
+
+    /* ── tela pós-login (dashboard placeholder) ── */
+    #tela-app { display: none; }
+
+    /* ── responsivo ── */
+    @media (max-width: 700px) {
+      .page { flex-direction: column; }
+      .left-panel {
+        padding: 2.5rem 1rem 1.5rem;
+        min-height: auto;
+      }
+      .logo-text { font-size: 2.2rem; }
+      .right-panel { padding: 1rem; }
+      .card { width: 100%; border-radius: 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- cajus decorativos -->
+<div class="caju-bg" id="cajuBg"></div>
+
+<!-- ════════════════════════════════════
+     TELA DE LOGIN
+════════════════════════════════════ -->
+<div class="page" id="tela-login">
+
+  <!-- Painel esquerdo -->
+  <div class="left-panel">
+    <div class="logo-wrap">
+      <div class="logo-icon">🥭</div>
+      <div class="logo-text">CajuCultura</div>
+      <div class="logo-sub">Explorando Sergipe com você</div>
+    </div>
+  </div>
+
+  <!-- Painel direito -->
+  <div class="right-panel">
+    <div class="card">
+
+      <!-- Abas -->
+      <div class="tabs">
+        <button class="tab active" onclick="selecionarPerfil('administrador', this)">Administrador</button>
+        <button class="tab"        onclick="selecionarPerfil('professor', this)">Professor</button>
+        <button class="tab"        onclick="selecionarPerfil('aluno', this)">Aluno</button>
+      </div>
+
+      <div class="card-title">Entrar</div>
+      <div class="card-signup">
+        Novo usuário? <a href="#" onclick="irParaCadastro(event)">Crie uma conta</a>
+      </div>
+
+      <!-- Mensagem feedback -->
+      <div class="msg" id="login-msg"></div>
+
+      <!-- Formulário -->
+      <form onsubmit="fazerLogin(event)">
+
+        <div class="field">
+          <label>Email</label>
+          <input id="login-email" type="email" placeholder="seu@email.com" autocomplete="email" required />
+        </div>
+
+        <!-- Senha (administrador e professor) -->
+        <div class="field" id="campo-senha">
+          <label>Senha</label>
+          <input id="login-senha" type="password" placeholder="••••••••" />
+        </div>
+
+        <!-- Código de turma (aluno) -->
+        <div class="field" id="campo-codigo" style="display:none;">
+          <label>Código da Turma</label>
+          <input id="login-codigo" placeholder="Ex: AB12CD" style="text-transform:uppercase;" />
+        </div>
+
+        <!-- ID de retorno (professor / aluno já cadastrado) -->
+        <div class="field field-id" id="campo-id">
+          <label id="label-id">Seu ID (se já tiver conta)</label>
+          <input id="login-id" placeholder="Cole seu ID aqui" />
+        </div>
+
+        <button type="submit" class="btn-continue">Continuar</button>
+      </form>
+
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════
+     TELA DO APP (placeholder)
+════════════════════════════════════ -->
+<div id="tela-app">
+  <!-- Aqui entrará o restante do sistema -->
+  <!-- Importar app.js ou carregar SPA -->
+</div>
+
+
+<script>
+  const API = '/api';
+  let perfilAtivo = 'administrador';
+
+  /* ── cajus decorativos gerados dinamicamente ── */
+  const cajuEmojis = ['🥭','🌿','🍊','🌾','✨'];
+  const bg = document.getElementById('cajuBg');
+  for (let i = 0; i < 22; i++) {
+    const s = document.createElement('span');
+    s.textContent = cajuEmojis[i % cajuEmojis.length];
+    s.style.left  = Math.random() * 100 + '%';
+    s.style.top   = Math.random() * 100 + '%';
+    s.style.fontSize = (2.5 + Math.random() * 3) + 'rem';
+    s.style.animationDelay    = (Math.random() * 6) + 's';
+    s.style.animationDuration = (6 + Math.random() * 5) + 's';
+    s.style.transform = `rotate(${Math.random() * 40 - 20}deg)`;
+    bg.appendChild(s);
+  }
+
+  /* ── troca de abas ── */
+  function selecionarPerfil(perfil, btn) {
+    perfilAtivo = perfil;
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    btn.classList.add('active');
+    limparMsg();
+
+    const campoSenha  = document.getElementById('campo-senha');
+    const campoCodigo = document.getElementById('campo-codigo');
+    const campoId     = document.getElementById('campo-id');
+    const labelId     = document.getElementById('label-id');
+
+    // reset
+    campoSenha.style.display  = 'block';
+    campoCodigo.style.display = 'none';
+    campoId.style.display     = 'none';
+    document.getElementById('login-senha').required  = false;
+    document.getElementById('login-codigo').required = false;
+
+    if (perfil === 'aluno') {
+      campoSenha.style.display  = 'none';
+      campoCodigo.style.display = 'block';
+      campoId.style.display     = 'block';
+      labelId.textContent       = 'Seu ID de aluno (se já entrou antes)';
+      document.getElementById('login-codigo').required = true;
+    } else if (perfil === 'professor') {
+      document.getElementById('login-senha').required = false;
+      campoId.style.display   = 'block';
+      labelId.textContent     = 'Seu ID de professor (se já tiver conta)';
+    } else {
+      // administrador
+      document.getElementById('login-senha').required = true;
+    }
+  }
+
+  /* ── submit ── */
+  async function fazerLogin(e) {
+    e.preventDefault();
+    limparMsg();
+
+    const email  = document.getElementById('login-email').value.trim();
+    const senha  = document.getElementById('login-senha').value.trim();
+    const codigo = document.getElementById('login-codigo').value.trim().toUpperCase();
+    const id     = document.getElementById('login-id').value.trim();
+
+    try {
+      if (perfilAtivo === 'administrador') {
+        await loginAdministrador(email, senha);
+
+      } else if (perfilAtivo === 'professor') {
+        await loginProfessor(email, senha, id);
+
+      } else {
+        await loginAluno(email, codigo, id);
+      }
+    } catch (err) {
+      mostrarMsg(err.message, 'erro');
+    }
+  }
+
+  /* ── login administrador ── */
+  async function loginAdministrador(email, senha) {
+    // Admin simples — credencial fixa para MVP
+    // Trocar por endpoint real em produção
+    if (email === 'admin@cajucultura.com' && senha === 'admin123') {
+      salvarSessao({ perfil: 'administrador', nome: 'Administrador', email });
+      entrarNoApp();
+    } else {
+      throw new Error('Credenciais inválidas para administrador.');
+    }
+  }
+
+  /* ── login professor ── */
+  async function loginProfessor(email, senha, id) {
+    if (id) {
+      // Retorno: carrega pelo ID
+      const prof = await req('GET', `/professores/${id}`);
+      salvarSessao({ perfil: 'professor', ...prof });
+      entrarNoApp();
+    } else {
+      // Novo: verifica se e-mail existe (simplificado — cria conta via cadastro)
+      throw new Error('Cole seu ID de professor ou clique em "Crie uma conta".');
+    }
+  }
+
+  /* ── login aluno ── */
+  async function loginAluno(email, codigo, id) {
+    if (!codigo) throw new Error('Informe o código da turma.');
+
+    if (id) {
+      // Retorno: carrega pelo ID
+      const aluno = await req('GET', `/alunos/${id}`);
+      salvarSessao({ perfil: 'aluno', ...aluno });
+      entrarNoApp();
+    } else {
+      // Novo: entra na turma usando o nome (extraído do e-mail por simplicidade)
+      const nome = email.split('@')[0];
+      const aluno = await req('POST', '/alunos/entrar', {
+        nome,
+        turma_codigo: codigo
+      });
+      salvarSessao({ perfil: 'aluno', ...aluno });
+      entrarNoApp();
+    }
+  }
+
+  /* ── cadastro ── */
+  function irParaCadastro(e) {
+    e.preventDefault();
+    if (perfilAtivo === 'professor') {
+      mostrarMsg('Preencha o email, deixe o campo ID vazio e clique em Continuar para criar sua conta.', 'ok');
+    } else if (perfilAtivo === 'aluno') {
+      mostrarMsg('Preencha email e código da turma. Deixe o ID em branco para entrar pela primeira vez.', 'ok');
+    } else {
+      mostrarMsg('Conta de administrador deve ser criada pelo sistema.', 'erro');
+    }
+  }
+
+  /* ── helpers ── */
+  async function req(method, path, body) {
+    const opts = { method, headers: { 'Content-Type': 'application/json' } };
+    if (body) opts.body = JSON.stringify(body);
+    const r = await fetch(API + path, opts);
+    const data = await r.json();
+    if (!r.ok) throw new Error(data.detail || 'Erro na requisição.');
+    return data;
+  }
+
+  function salvarSessao(dados) {
+    localStorage.setItem('cajucultura_sessao', JSON.stringify(dados));
+  }
+
+  function carregarSessao() {
+    const s = localStorage.getItem('cajucultura_sessao');
+    return s ? JSON.parse(s) : null;
+  }
+
+  function entrarNoApp() {
+    document.getElementById('tela-login').style.display = 'none';
+    document.getElementById('tela-app').style.display   = 'block';
+    // Disparar evento para o restante do SPA
+    window.dispatchEvent(new CustomEvent('cajucultura:login', {
+      detail: carregarSessao()
+    }));
+    // Placeholder visual enquanto o app não está integrado
+    document.getElementById('tela-app').innerHTML = `
+      <div style="min-height:100vh;display:flex;align-items:center;justify-content:center;background:#FFF8F2;">
+        <div style="text-align:center;">
+          <div style="font-size:4rem;">🥭</div>
+          <h2 style="font-family:Poppins,sans-serif;color:#F47C20;margin:1rem 0;">
+            Bem-vindo ao CajuCultura!
+          </h2>
+          <p style="color:#666;font-family:Poppins,sans-serif;">
+            Logado como <strong>${carregarSessao()?.perfil}</strong>
+          </p>
+          <button onclick="sair()"
+            style="margin-top:1.5rem;padding:0.7rem 2rem;background:#F47C20;color:#fff;
+                   border:none;border-radius:10px;font-size:1rem;cursor:pointer;
+                   font-family:Poppins,sans-serif;">
+            Sair
+          </button>
+        </div>
+      </div>
+    `;
+  }
+
+  function sair() {
+    localStorage.removeItem('cajucultura_sessao');
+    location.reload();
+  }
+
+  function mostrarMsg(txt, tipo = 'erro') {
+    const el = document.getElementById('login-msg');
+    el.textContent = txt;
+    el.className   = `msg ${tipo}`;
+  }
+
+  function limparMsg() {
+    const el = document.getElementById('login-msg');
+    el.textContent = '';
+    el.className   = 'msg';
+  }
+
+  /* ── verifica sessão salva ao carregar ── */
+  window.addEventListener('DOMContentLoaded', () => {
+    const sessao = carregarSessao();
+    if (sessao) entrarNoApp();
+  });
+</script>
+</body>
+</html>
