@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogos — Cultura Sergipe</title>
+    <link rel="stylesheet" href="../public/css/style.css">
+</head>
+<body>
+
+    <div class="acessibilidade-bar">
+        <button class="acessibilidade-btn" onclick="toggleTEA()">👁 Modo TEA</button>
+        <button class="acessibilidade-btn" onclick="toggleContraste()">🔲 Alto Contraste</button>
+        <button class="acessibilidade-btn" onclick="aumentarFonte()">A+</button>
+        <button class="acessibilidade-btn" onclick="diminuirFonte()">A-</button>
+    </div>
+
+    <header class="header">
+        <nav class="nav-container">
+            <a href="/" class="logo"><span class="logo-icon">🎶</span><span>Cultura Sergipe</span></a>
+            <div class="nav-links">
+                <a href="../public/index.html" class="nav-link">Início</a>
+                <a href="../public/jogos.html" class="nav-link active">🎮 Jogos</a>
+                <a href="../public/wiki.html" class="nav-link">📚 Wiki</a>
+                <a href="../public/turmas.html" class="nav-link">🏫 Turmas</a>
+                <a href="../public/ranking.html" class="nav-link destaque">🏆 Ranking</a>
+            </div>
+        </nav>
+    </header>
+
+    <section class="container">
+        <h2 class="section-title"><span class="emoji">🎮</span> Escolha seu Jogo</h2>
+        <p style="color:var(--cor-texto-leve); margin-bottom:24px;">Aprenda sobre a cultura sergipana jogando! Cada jogo ensina de um jeito diferente.</p>
+
+        <div class="cards-grid">
+            <!-- Onde Fica? -->
+            <a href="/onde-fica.html" class="card" style="text-decoration:none">
+                <div style="height:200px; background:linear-gradient(135deg,#E8721C,#ff9800); display:flex; flex-direction:column; align-items:center; justify-content:center; color:white;">
+                    <span style="font-size:4rem">📍</span>
+                    <span style="font-size:1.3rem; font-weight:700; margin-top:10px;">Onde Fica?</span>
+                </div>
+                <div class="card-body">
+                    <h3>Localize no Mapa</h3>
+                    <p>Veja a imagem de uma manifestação cultural e aponte no mapa de Sergipe onde ela acontece. Inspirado no WhenTaken!</p>
+                    <div style="margin-top:12px;">
+                        <span class="card-badge badge-imaterial">📍 Geografia</span>
+                        <span class="card-badge badge-material">🗺️ Mapa</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Material ou Imaterial? -->
+            <a href="/material-imaterial.html" class="card" style="text-decoration:none">
+                <div style="height:200px; background:linear-gradient(135deg,#1565C0,#6A1B9A); display:flex; flex-direction:column; align-items:center; justify-content:center; color:white;">
+                    <span style="font-size:4rem">🏛️</span>
+                    <span style="font-size:1.3rem; font-weight:700; margin-top:10px;">Material ou Imaterial?</span>
+                </div>
+                <div class="card-body">
+                    <h3>Classifique o Patrimônio</h3>
+                    <p>Estilo Tinder! Arraste para a esquerda (material) ou direita (imaterial) para classificar cada patrimônio sergipano.</p>
+                    <div style="margin-top:12px;">
+                        <span class="card-badge badge-material">🏛️ Material</span>
+                        <span class="card-badge badge-imaterial">✨ Imaterial</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Duolingo Cultural -->
+            <a href="/duolingo.html" class="card" style="text-decoration:none">
+                <div style="height:200px; background:linear-gradient(135deg,#2E7D32,#66BB6A); display:flex; flex-direction:column; align-items:center; justify-content:center; color:white;">
+                    <span style="font-size:4rem">🧠</span>
+                    <span style="font-size:1.3rem; font-weight:700; margin-top:10px;">Aprenda Cultura</span>
+                </div>
+                <div class="card-body">
+                    <h3>Lições Interativas</h3>
+                    <p>Estilo Duolingo! Aprenda sobre forró, festas e patrimônios de Sergipe com lições curtas e acessíveis.</p>
+                    <div style="margin-top:12px;">
+                        <span class="card-badge badge-imaterial">♿ Acessível</span>
+                        <span class="card-badge badge-material">🧩 TEA</span>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <!-- Dica -->
+        <div style="background:var(--cor-primaria-clara); border:2px solid var(--cor-primaria); border-radius:var(--raio-borda); padding:20px; margin-top:30px; text-align:center;">
+            <p style="font-size:1.1rem;">💡 <strong>Dica do professor:</strong> Use o código da sua turma para que seus pontos apareçam no ranking!</p>
+            <a href="/turmas.html" class="btn btn-primario" style="margin-top:12px;">Entrar na Turma</a>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>🎶 <strong>Cultura Sergipe</strong> — Preservando memórias, conectando gerações.</p>
+    </footer>
+
+    <script src="/js/app.js"></script>
+</body>
+</html>

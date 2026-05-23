@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Turmas — Cultura Sergipe</title>
+  <link rel="stylesheet" href="../public/css/style.css" />
+</head>
+<body>
+
+  <div class="acessibilidade-bar">
+    <button class="acessibilidade-btn" onclick="toggleTEA()">👁 Modo TEA</button>
+    <button class="acessibilidade-btn" onclick="toggleContraste()">🔲 Alto Contraste</button>
+    <button class="acessibilidade-btn" onclick="aumentarFonte()">A+</button>
+    <button class="acessibilidade-btn" onclick="diminuirFonte()">A-</button>
+  </div>
+
+  <header class="header">
+    <nav class="nav-container">
+      <a href="/" class="logo"><span class="logo-icon">🎶</span><span>Cultura Sergipe</span></a>
+      <div class="nav-links">
+        <a href="../public/index.html"             class="nav-link">Início</a>
+        <a href="../public/jogos.html"   class="nav-link">🎮 Jogos</a>
+        <a href="../public/wiki.html"    class="nav-link">📚 Wiki</a>
+        <a href="../public/turmas.html"  class="nav-link active">🏫 Turmas</a>
+        <a href="../public/ranking.html" class="nav-link destaque">🏆 Ranking</a>
+      </div>
+    </nav>
+  </header>
+
+  <section class="container">
+    <h2 class="section-title"><span class="emoji">🏫</span> Turmas Virtuais</h2>
+
+    <!-- Tabs -->
+    <div style="display:flex; gap:10px; margin-bottom:24px; flex-wrap:wrap;">
+      <button class="btn btn-primario" onclick="mostrarTabTurma('entrar')">🎓 Entrar numa Turma</button>
+      <button class="btn btn-outline"  onclick="mostrarTabTurma('criar')">➕ Criar Turma (Professor)</button>
+      <button class="btn btn-outline"  onclick="mostrarTabTurma('minha')">📋 Minha Turma</button>
+    </div>
+
+    <!-- ── Entrar numa turma ── -->
+    <div id="tab-entrar">
+      <div class="turma-form">
+        <h3 style="margin-bottom:16px;">🎓 Entrar numa Turma</h3>
+        <p style="color:var(--cor-texto-leve); margin-bottom:16px; font-size:0.9rem;">
+          Peça o código da turma ao seu professor!
+        </p>
+        <div class="form-grupo">
+          <label>Código da Turma *</label>
+          <input id="codigo-turma" type="text" placeholder="Ex: ABC123"
+                 maxlength="6"
+                 style="text-transform:uppercase; text-align:center;
+                        font-size:1.3rem; letter-spacing:5px;" />
+        </div>
+        <div class="form-grupo">
+          <label>Seu Nome *</label>
+          <input id="nome-aluno" type="text" placeholder="Seu nome completo" />
+        </div>
+        <button class="btn btn-primario" onclick="entrarTurma()" style="width:100%;">
+          🚀 Entrar na Turma
+        </button>
+      </div>
+    </div>
+
+    <!-- ── Criar turma ── -->
+    <div id="tab-criar" style="display:none;">
+      <div class="turma-form">
+        <h3 style="margin-bottom:16px;">➕ Criar Nova Turma</h3>
+        <div class="form-grupo">
+          <label>Nome da Turma *</label>
+          <input id="nome-turma" type="text" placeholder="Ex: 9º Ano B — História" />
+        </div>
+        <div class="form-grupo">
+          <label>Professor(a) *</label>
+          <input id="nome-professor" type="text" placeholder="Seu nome" />
+        </div>
+        <div class="form-grupo">
+          <label>E-mail *</label>
+          <input id="email-professor" type="email" placeholder="professor@escola.edu.br" />
+        </div>
+        <div class="form-grupo">
+          <label>Escola *</label>
+          <input id="nome-escola" type="text" placeholder="Nome da escola" />
+        </div>
+        <button class="btn btn-primario" onclick="criarTurma()" style="width:100%;">
+          ✅ Criar Turma
+        </button>
+      </div>
+
+      <!-- Código gerado -->
+      <div id="turma-criada" style="display:none; text-align:center; margin-top:24px;">
+        <div style="background:var(--cor-secundaria-clara); border:2px solid var(--cor-sucesso);
+                    border-radius:var(--raio-borda); padding:30px;">
+          <p style="font-size:1rem; margin-bottom:10px;">Código da turma:</p>
+          <p style="font-size:3rem; font-weight:700; letter-spacing:10px;
+                    color:var(--cor-secundaria);" id="codigo-gerado"></p>
+          <p style="font-size:0.85rem; color:var(--cor-texto-leve); margin-top:10px;">
+            Compartilhe este código com seus alunos!
+          </p>
+          <button class="btn btn-outline" onclick="copiarCodigo()" style="margin-top:12px;">
+            📋 Copiar Código
+          </button>
+        </div>
+
+        <!-- ID do professor -->
+        <div style="background:var(--cor-primaria-clara); border-radius:var(--raio-borda);
+                    padding:16px; margin-top:16px;">
+          <p style="font-size:0.9rem; margin-bottom:6px;">Seu ID de professor (guarde!):</p>
+          <p style="font-size:1rem; font-weight:700; color:var(--cor-primaria);"
+             id="professor-id-gerado"></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Minha turma ── -->
+    <div id="tab-minha" style="display:none;">
+      <div id="info-minha-turma">
+        <!-- preenchido via JS -->
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>🎶 <strong>Cultura Sergipe</strong> — Preservando memórias, conectando gerações.</p>
+  </footer>
+
+  <div class="toast" id="toast"></div>
+
+  <script src="/js/app.js"></script>
+  <script>
+    // ── Tabs ────────────────────────────────────────────────
+    function mostrarTabTurma(tab) {
+      ['entrar','criar','minha'].forEach(t => {
+        document.getElementById(`tab-${t}`).style.display = t === tab ? 'block' : 'none';
+      });
+      if (tab === 'minha') carregarMinhaTurma();
+    }
+
+    // ── Entrar na turma ─────────────────────────────────────
+    async function entrarTurma() {
+      const codigo = document.getElementById('codigo-turma').value.trim().toUpperCase();
+      const nome   = document.getElementById('nome-aluno').value.trim();
+
+      if (!codigo || !nome) {
+        mostrarToast('⚠️ Preencha o código e seu nome!', 'erro');
+        return;
+      }
+
+      try {
+        const aluno = await apiRequest('POST', '/alunos/entrar', {
+          nome,
+          turma_codigo: codigo,
+        });
+
+        // Salva sessão do aluno
+        salvarSessao({ perfil: 'aluno', ...aluno });
+
+        mostrarToast(`✅ Bem-vindo(a) à turma ${codigo}, ${nome}!`, 'sucesso');
+        mostrarTabTurma('minha');
+      } catch (err) {
+        mostrarToast(`❌ ${err.message}`, 'erro');
+      }
+    }
+
+    // ── Criar turma ─────────────────────────────────────────
+    async function criarTurma() {
+      const nome    = document.getElementById('nome-turma').value.trim();
+      const profNome = document.getElementById('nome-professor').value.trim();
+      const email   = document.getElementById('email-professor').value.trim();
+      const escola  = document.getElementById('nome-escola').value.trim();
+
+      if (!nome || !profNome || !email || !escola) {
+        mostrarToast('⚠️ Preencha todos os campos!', 'erro');
+        return;
+      }
+
+      try {
+        // 1. Cadastra professor
+        const prof = await apiRequest('POST', '/professores', {
+          nome: profNome,
+          email,
+          escola,
+        });
+
+        // 2. Cria turma
+        const turma = await apiRequest('POST', '/turmas', {
+          nome,
+          professor_id: prof.id,
+        });
+
+        // Exibe resultado
+        document.getElementById('turma-criada').style.display       = 'block';
+        document.getElementById('codigo-gerado').textContent        = turma.codigo;
+        document.getElementById('professor-id-gerado').textContent  = prof.id;
+
+        // Salva sessão do professor
+        salvarSessao({ perfil: 'professor', ...prof, turma_codigo: turma.codigo });
+
+        mostrarToast('✅ Turma criada com sucesso!', 'sucesso');
+      } catch (err) {
+        mostrarToast(`❌ ${err.message}`, 'erro');
+      }
+    }
+
+    function copiarCodigo() {
+      const codigo = document.getElementById('codigo-gerado').textContent;
+      navigator.clipboard.writeText(codigo)
+        .then(() => mostrarToast('✅ Código copiado!', 'sucesso'))
+        .catch(() => mostrarToast('❌ Não foi possível copiar', 'erro'));
+    }
+
+    // ── Minha turma ─────────────────────────────────────────
+    async function carregarMinhaTurma() {
+      const sessao  = AppState.sessao;
+      const container = document.getElementById('info-minha-turma');
+
+      if (!sessao) {
+        container.innerHTML = `
+          <p style="text-align:center; color:var(--cor-texto-leve); padding:40px;">
+            Você ainda não entrou em nenhuma turma.<br>
+            <button class="btn btn-primario" onclick="mostrarTabTurma('entrar')"
+                    style="margin-top:12px;">🎓 Entrar agora</button>
+          </p>`;
+        return;
+      }
+
+      container.innerHTML = `
+        <div style="background:var(--cor-card); border-radius:var(--raio-borda);
+                    padding:24px; box-shadow:var(--sombra-card); max-width:500px; margin:0 auto;">
+          <h3 style="margin-bottom:16px;">Você está na turma</h3>
+          <p><strong>Perfil:</strong> ${sessao.perfil}</p>
+          <p><strong>Nome:</strong> ${sessao.nome}</p>
+          ${sessao.turma_codigo
+            ? `<p><strong>Código da turma:</strong>
+                 <span style="font-size:1.2rem; letter-spacing:4px; color:var(--cor-primaria);">
+                   ${sessao.turma_codigo}
+                 </span>
+               </p>`
+            : ''
+          }
+          ${sessao.id
+            ? `<p style="font-size:0.82rem; color:var(--cor-texto-leve);">
+                 Seu ID: ${sessao.id}
+               </p>`
+            : ''
+          }
+          <button class="btn btn-outline" onclick="sairTurma()" style="margin-top:16px; width:100%;">
+            🚪 Sair da Turma
+          </button>
+        </div>
+      `;
+
+      // Se for aluno, carrega ranking da turma dele
+      if (sessao.perfil === 'aluno' && sessao.turma_codigo) {
+        try {
+          const r = await apiRequest('GET', `/ranking/${sessao.turma_codigo}`);
+          container.innerHTML += renderRankingMini(r.ranking);
+        } catch (_) {}
+      }
+    }
+
+    function renderRankingMini(ranking) {
+      if (!ranking.length) return '';
+      const itens = ranking.slice(0, 5).map((r, i) => `
+        <div class="ranking-item">
+          <div class="ranking-pos ${['ouro','prata','bronze'][i] || ''}">
+            ${['🥇','🥈','🥉'][i] || i + 1}
+          </div>
+          <div class="ranking-info"><h4>${r.aluno_nome}</h4></div>
+          <div class="ranking-pontos">${r.pontos_total} pts</div>
+        </div>
+      `).join('');
+      return `
+        <div style="margin-top:24px;">
+          <h4 style="margin-bottom:12px;">🏆 Ranking da Turma</h4>
+          <div class="ranking-lista">${itens}</div>
+        </div>
+      `;
+    }
+
+    function sairTurma() {
+      limparSessao();
+      mostrarToast('Você saiu da turma.', '');
+      carregarMinhaTurma();
+    }
+
+    // ── Inicia na aba correta ────────────────────────────────
+    document.addEventListener('DOMContentLoaded', () => {
+      const sessao = AppState.sessao;
+      if (sessao?.turma_codigo) mostrarTabTurma('minha');
+    });
+  </script>
+</body>
+</html>

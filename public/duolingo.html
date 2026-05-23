@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aprenda Cultura — Cultura Sergipe</title>
+    <link rel="stylesheet" href="../public/css/style.css">
+</head>
+<body>
+
+    <div class="acessibilidade-bar">
+        <button class="acessibilidade-btn" onclick="toggleTEA()">👁 Modo TEA</button>
+        <button class="acessibilidade-btn" onclick="toggleContraste()">🔲 Alto Contraste</button>
+        <button class="acessibilidade-btn" onclick="aumentarFonte()">A+</button>
+        <button class="acessibilidade-btn" onclick="diminuirFonte()">A-</button>
+    </div>
+
+    <header class="header">
+        <nav class="nav-container">
+            <a href="/" class="logo"><span class="logo-icon">🎶</span><span>Cultura Sergipe</span></a>
+            <div class="nav-links">
+                <a href="../public/index.html" class="nav-link">Início</a>
+                <a href="../public/jogos.html" class="nav-link active">🎮 Jogos</a>
+                <a href="../public/wiki.html" class="nav-link">📚 Wiki</a>
+                <a href="../public/turmas.html" class="nav-link">🏫 Turmas</a>
+                <a href="../public/ranking.html" class="nav-link destaque">🏆 Ranking</a>
+            </div>
+        </nav>
+    </header>
+
+    <div class="pontuacao-flutuante">
+        ⭐ <span id="pontos-total">0</span> pts
+    </div>
+
+    <section class="container duolingo-container">
+        <h2 class="section-title"><span class="emoji">🧠</span> Aprenda Cultura Sergipana</h2>
+
+        <!-- Seleção de Lições -->
+        <div id="selecao-licoes">
+            <p style="color:var(--cor-texto-leve); margin-bottom:20px;">Escolha uma lição para começar. Cada lição tem 3 perguntas interativas!</p>
+            <div class="cards-grid" id="licoes-grid">
+                <!-- Preenchido via JS -->
+            </div>
+        </div>
+
+        <!-- Área da Lição Ativa -->
+        <div id="licao-ativa" style="display:none;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+                <button class="btn btn-outline" onclick="voltarLicoes()" style="padding:8px 16px; font-size:0.85rem;">← Voltar</button>
+                <h3 id="licao-titulo"></h3>
+                <span style="font-size:0.9rem; color:var(--cor-texto-leve);">Nível <span id="licao-nivel"></span></span>
+            </div>
+
+            <div class="progresso-bar">
+                <div class="progresso-fill" id="progresso-fill" style="width:0%"></div>
+            </div>
+            <p style="text-align:center; font-size:0.85rem; color:var(--cor-texto-leve); margin-bottom:16px;">
+                Pergunta <span id="pergunta-num">1</span> de <span id="total-perguntas">3</span>
+            </p>
+
+            <!-- Pergunta -->
+            <div class="licao-card" id="pergunta-card">
+                <h3 id="pergunta-texto"></h3>
+                <div id="dica-container" class="dica-box" style="display:none;">
+                    💡 <span id="dica-texto"></span>
+                </div>
+                <div id="opcoes-container"></div>
+            </div>
+
+            <!-- Feedback -->
+            <div class="feedback-box" id="feedback-box">
+                <p id="feedback-texto"></p>
+            </div>
+
+            <!-- Botões -->
+            <div class="btn-grupo" style="justify-content:center;">
+                <button class="btn btn-outline" id="btn-dica" onclick="mostrarDica()" style="display:none;">💡 Dica</button>
+                <button class="btn btn-primario" id="btn-proximo" onclick="proximaPergunta()" style="display:none;">
+                    ➡️ Continuar
+                </button>
+            </div>
+        </div>
+
+        <!-- Resultado da Lição -->
+        <div id="resultado-licao" style="display:none; text-align:center; padding:40px 0;">
+            <h2 style="font-size:2rem;">🎉 Lição Completa!</h2>
+            <div class="estrelas" id="estrelas-final"></div>
+            <p style="font-size:1.5rem; font-weight:700; color:var(--cor-primaria); margin:16px 0;">
+                <span id="pontos-finais">0</span> pontos
+            </p>
+            <p style="color:var(--cor-texto-leve); margin-bottom:24px;">
+                Acertos: <span id="acertos-final">0</span>/<span id="total-final">3</span>
+            </p>
+            <div class="btn-grupo" style="justify-content:center;">
+                <button class="btn btn-primario btn-grande" onclick="voltarLicoes()">📚 Mais Lições</button>
+                <a href="/jogos.html" class="btn btn-outline btn-grande">🎮 Outros Jogos</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>🎶 <strong>Cultura Sergipe</strong> — Preservando memórias, conectando gerações.</p>
+    </footer>
+
+    <div class="toast" id="toast"></div>
+
+    <script src="/js/app.js"></script>
+    <script src="/js/duolingo.js"></script>
+</body>
+</html>

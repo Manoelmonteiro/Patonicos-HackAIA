@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ranking — Cultura Sergipe</title>
+  <link rel="stylesheet" href="../public/css/style.css" />
+</head>
+<body>
+
+  <div class="acessibilidade-bar">
+    <button class="acessibilidade-btn" onclick="toggleTEA()">👁 Modo TEA</button>
+    <button class="acessibilidade-btn" onclick="toggleContraste()">🔲 Alto Contraste</button>
+    <button class="acessibilidade-btn" onclick="aumentarFonte()">A+</button>
+    <button class="acessibilidade-btn" onclick="diminuirFonte()">A-</button>
+  </div>
+
+  <header class="header">
+    <nav class="nav-container">
+      <a href="/" class="logo"><span class="logo-icon">🎶</span><span>Cultura Sergipe</span></a>
+      <div class="nav-links">
+        <a href="/"               class="nav-link">Início</a>
+        <a href="/jogos.html"     class="nav-link">🎮 Jogos</a>
+        <a href="/wiki.html"      class="nav-link">📚 Wiki</a>
+        <a href="/turmas.html"    class="nav-link">🏫 Turmas</a>
+        <a href="/ranking.html"   class="nav-link destaque active">🏆 Ranking</a>
+      </div>
+    </nav>
+  </header>
+
+  <section class="container">
+    <h2 class="section-title"><span class="emoji">🏆</span> Ranking</h2>
+
+    <!-- Busca por turma -->
+    <div style="max-width:400px; margin:0 auto 24px;">
+      <div style="display:flex; gap:10px;">
+        <input
+          id="input-turma"
+          type="text"
+          placeholder="Código da turma (ex: ABC123)"
+          style="flex:1; padding:12px 16px; border:2px solid var(--cor-borda);
+                 border-radius:10px; font-size:1rem; text-transform:uppercase;"
+          maxlength="6"
+        />
+        <button class="btn btn-primario" onclick="buscarRanking()">🔍</button>
+      </div>
+    </div>
+
+    <!-- Ranking local (pontos salvos no browser) -->
+    <h3 style="margin-bottom:16px;">🌐 Ranking Local (seus pontos)</h3>
+    <div class="ranking-lista" id="ranking-local">
+      <!-- preenchido via JS -->
+    </div>
+
+    <!-- Ranking da turma (via API) -->
+    <div id="secao-turma" style="display:none; margin-top:32px;">
+      <h3 style="margin-bottom:16px;">🏫 Ranking da Turma: <span id="titulo-turma"></span></h3>
+      <div class="ranking-lista" id="ranking-turma">
+        <!-- preenchido via JS -->
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>🎶 <strong>Cultura Sergipe</strong> — Preservando memórias, conectando gerações.</p>
+  </footer>
+
+  <div class="toast" id="toast"></div>
+
+  <script src="/js/app.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      renderizarRankingLocal();
+    });
+
+    function renderizarRankingLocal() {
+      const lista = document.getElementById('ranking-local');
+
+      // Coleta histórico salvo localmente
+      const historico = JSON.parse(localStorage.getItem('cs_historico') || '[]');
+      const pts = parseInt(localStorage.getItem('cs_pontos') || '0');
+      const nome = AppState.sessao?.nome || 'Você';
+
+      if (!historico.length && !pts) {
+        lista.innerHTML = `
+          <div class="ranking-item">
+            <span style="color:var(--cor-texto-leve); padding:8px;">
+              Jogue alguma atividade para aparecer aqui! 🎮
+            </span>
+          </div>`;
+        return;
+      }
+
+      // Exibe apenas o próprio usuário no ranking local (MVP)
+      lista.innerHTML = `
+        <div class="ranking-item">
+          <div class="ranking-pos ouro">1</div>
+          <div class="ranking-info">
+            <h4>${nome}</h4>
+            <small>Pontos acumulados neste dispositivo</small>
+          </div>
+          <div class="ranking-pontos">${pts} pts</div>
+        </div>
+      `;
+    }
+
+    async function buscarRanking() {
+      const codigo = document.getElementById('input-turma').value.trim().toUpperCase();
+      if (!codigo || codigo.length < 4) {
+        mostrarToast('⚠️ Digite um código de turma válido', 'erro');
+        return;
+      }
+
+      try {
+        const data = await apiRequest('GET', `/ranking/${codigo}`);
+        renderizarRankingTurma(codigo, data.ranking);
+      } catch (err) {
+        mostrarToast(`❌ ${err.message}`, 'erro');
+      }
+    }
+
+    function renderizarRankingTurma(codigo, ranking) {
+      document.getElementById('secao-turma').style.display = 'block';
+      document.getElementById('titulo-turma').textContent  = codigo;
+
+      const lista = document.getElementById('ranking-turma');
+
+      if (!ranking.length) {
+        lista.innerHTML = `<div class="ranking-item">
+          <span style="color:var(--cor-texto-leve); padding:8px;">
+            Nenhum aluno jogou nesta turma ainda.
+          </span>
+        </div>`;
+        return;
+      }
+
+      const medalhas = ['ouro','prata','bronze'];
+      lista.innerHTML = ranking.map((r, i) => `
+        <div class="ranking-item">
+          <div class="ranking-pos ${medalhas[i] || ''}">
+            ${i < 3 ? ['🥇','🥈','🥉'][i] : i + 1}
+          </div>
+          <div class="ranking-info">
+            <h4>${r.aluno_nome}</h4>
+            <small>${r.partidas} partida${r.partidas !== 1 ? 's' : ''} —
+              ${r.acertos_total} acertos</small>
+          </div>
+          <div class="ranking-pontos">${r.pontos_total} pts</div>
+        </div>
+      `).join('');
+    }
+  </script>
+</body>
+</html>

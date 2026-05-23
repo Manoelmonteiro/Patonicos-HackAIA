@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wiki Sergipana — Cultura Sergipe</title>
+    <link rel="stylesheet" href="../public/css/style.css">
+</head>
+<body>
+
+    <div class="acessibilidade-bar">
+        <button class="acessibilidade-btn" onclick="toggleTEA()">👁 Modo TEA</button>
+        <button class="acessibilidade-btn" onclick="toggleContraste()">🔲 Alto Contraste</button>
+        <button class="acessibilidade-btn" onclick="aumentarFonte()">A+</button>
+        <button class="acessibilidade-btn" onclick="diminuirFonte()">A-</button>
+    </div>
+
+    <header class="header">
+        <nav class="nav-container">
+            <a href="/" class="logo"><span class="logo-icon">🎶</span><span>Cultura Sergipe</span></a>
+            <div class="nav-links">
+                <a href="../public/index.html" class="nav-link">Início</a>
+                <a href="../public/jogos.html" class="nav-link">🎮 Jogos</a>
+                <a href="../public/wiki.html" class="nav-link active">📚 Wiki</a>
+                <a href="../public/turmas.html" class="nav-link">🏫 Turmas</a>
+                <a href="../public/ranking.html" class="nav-link destaque">🏆 Ranking</a>
+            </div>
+        </nav>
+    </header>
+
+    <section class="container">
+        <h2 class="section-title"><span class="emoji">📚</span> Wiki Sergipana</h2>
+        <p style="color:var(--cor-texto-leve); margin-bottom:20px;">Explore e contribua com o conhecimento sobre a cultura de Sergipe!</p>
+
+        <!-- Busca -->
+        <div class="search-section" style="margin:0 0 24px; padding:0;">
+            <div class="search-bar">
+                <input type="text" id="wiki-busca" placeholder="Buscar na wiki..." aria-label="Buscar na wiki">
+                <button onclick="filtrarWiki()">🔍</button>
+            </div>
+        </div>
+
+        <!-- Tabs -->
+        <div style="display:flex; gap:10px; margin-bottom:24px; flex-wrap:wrap;">
+            <button class="btn btn-primario" onclick="mostrarTab('explorar')">📖 Explorar</button>
+            <button class="btn btn-outline" onclick="mostrarTab('enviar')">➕ Enviar Conteúdo</button>
+            <button class="btn btn-outline" onclick="mostrarTab('enviados')">📋 Meus Envios</button>
+        </div>
+
+        <!-- Tab: Explorar -->
+        <div id="tab-explorar">
+            <div class="cards-grid" id="wiki-grid">
+                <!-- Preenchido via JS -->
+            </div>
+        </div>
+
+        <!-- Tab: Enviar Conteúdo -->
+        <div id="tab-enviar" style="display:none;">
+            <div class="turma-form">
+                <h3 style="margin-bottom:16px;">📝 Enviar Novo Conteúdo Cultural</h3>
+                <p style="color:var(--cor-texto-leve); margin-bottom:16px; font-size:0.9rem;">
+                    Seu conteúdo será analisado antes de ser publicado. Conteúdos aprovados podem virar perguntas nos jogos!
+                </p>
+                <div class="form-grupo">
+                    <label>Título *</label>
+                    <input type="text" id="wiki-titulo" placeholder="Ex: Festa de São João em Estância">
+                </div>
+                <div class="form-grupo">
+                    <label>Descrição *</label>
+                    <textarea id="wiki-descricao" rows="4" placeholder="Descreva o patrimônio, festa, tradição..."></textarea>
+                </div>
+                <div class="form-grupo">
+                    <label>Cidade *</label>
+                    <input type="text" id="wiki-cidade" placeholder="Ex: Laranjeiras">
+                </div>
+                <div class="form-grupo">
+                    <label>Categoria *</label>
+                    <select id="wiki-categoria">
+                        <option value="">Selecione...</option>
+                        <option value="festa">🎉 Festa / Celebração</option>
+                        <option value="danca">💃 Dança</option>
+                        <option value="musica">🎵 Música</option>
+                        <option value="artesanato">🧶 Artesanato</option>
+                        <option value="gastronomia">🍽️ Gastronomia</option>
+                        <option value="patrimonio">🏛️ Patrimônio Edificado</option>
+                        <option value="folclore">👹 Folclore</option>
+                        <option value="religioso">⛪ Religioso</option>
+                        <option value="natureza">🌿 Natureza</option>
+                        <option value="outro">📦 Outro</option>
+                    </select>
+                </div>
+                <div class="form-grupo">
+                    <label>Tipo *</label>
+                    <select id="wiki-tipo">
+                        <option value="">Selecione...</option>
+                        <option value="material">🏛️ Material</option>
+                        <option value="imaterial">✨ Imaterial</option>
+                    </select>
+                </div>
+                <div class="form-grupo">
+                    <label>Seu nome</label>
+                    <input type="text" id="wiki-autor" placeholder="Seu nome">
+                </div>
+                <div class="form-grupo">
+                    <label>Fonte (opcional)</label>
+                    <input type="text" id="wiki-fonte" placeholder="Link ou referência">
+                </div>
+                <button class="btn btn-primario" onclick="enviarWiki()" style="width:100%;">
+                    📤 Enviar para Análise
+                </button>
+            </div>
+        </div>
+
+        <!-- Tab: Meus Envios -->
+        <div id="tab-enviados" style="display:none;">
+            <div id="meus-envios">
+                <p style="text-align:center; color:var(--cor-texto-leve); padding:40px;">
+                    Nenhum envio ainda. Contribua com a wiki sergipana!
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>🎶 <strong>Cultura Sergipe</strong> — Preservando memórias, conectando gerações.</p>
+    </footer>
+
+    <div class="toast" id="toast"></div>
+
+    <script src="/js/app.js"></script>
+    <script src="/js/wiki.js"></script>
+</body>
+</html>
