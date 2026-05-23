@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Material ou Imaterial? — Cultura Sergipe</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+    <div class="acessibilidade-bar">
+        <button class="acessibilidade-btn" onclick="toggleTEA()">👁 Modo TEA</button>
+        <button class="acessibilidade-btn" onclick="toggleContraste()">🔲 Alto Contraste</button>
+        <button class="acessibilidade-btn" onclick="aumentarFonte()">A+</button>
+        <button class="acessibilidade-btn" onclick="diminuirFonte()">A-</button>
+    </div>
+
+    <header class="header">
+        <nav class="nav-container">
+            <a href="/" class="logo"><span class="logo-icon">🎶</span><span>Cultura Sergipe</span></a>
+            <div class="nav-links">
+                <a href="/" class="nav-link">Início</a>
+                <a href="/jogos.html" class="nav-link active">🎮 Jogos</a>
+                <a href="/wiki.html" class="nav-link">📚 Wiki</a>
+                <a href="/turmas.html" class="nav-link">🏫 Turmas</a>
+                <a href="/ranking.html" class="nav-link destaque">🏆 Ranking</a>
+            </div>
+        </nav>
+    </header>
+
+    <div class="pontuacao-flutuante">
+        ⭐ <span id="pontos-total">0</span> pts
+    </div>
+
+    <section class="container">
+        <h2 class="section-title"><span class="emoji">🏛️</span> Material ou Imaterial?</h2>
+        <p style="color:var(--cor-texto-leve); margin-bottom:10px;">Classifique cada patrimônio cultural de Sergipe! É material (físico) ou imaterial (intangível)?</p>
+
+        <!-- Legenda -->
+        <div style="display:flex; justify-content:center; gap:30px; margin:16px 0;">
+            <div style="display:flex; align-items:center; gap:8px;">
+                <span style="width:20px; height:20px; background:var(--cor-material); border-radius:50%; display:inline-block;"></span>
+                <span><strong>Material</strong> — Edificações, monumentos, objetos</span>
+            </div>
+            <div style="display:flex; align-items:center; gap:8px;">
+                <span style="width:20px; height:20px; background:var(--cor-imaterial); border-radius:50%; display:inline-block;"></span>
+                <span><strong>Imaterial</strong> — Festas, danças, saberes, tradições</span>
+            </div>
+        </div>
+
+        <!-- Progresso -->
+        <div class="progresso-bar">
+            <div class="progresso-fill" id="progresso-fill" style="width:0%"></div>
+        </div>
+        <p style="text-align:center; font-size:0.85rem; color:var(--cor-texto-leve);">
+            <span id="carta-num">1</span> de <span id="total-cartas">8</span>
+        </p>
+
+        <!-- Card Tinder -->
+        <div id="jogo-container">
+            <div class="swipe-container">
+                <div class="swipe-card" id="swipe-card">
+                    <img id="carta-img" src="" alt="Patrimônio cultural">
+                    <div class="swipe-info">
+                        <h3 id="carta-nome"></h3>
+                        <p id="carta-desc"></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="swipe-actions">
+                <button class="swipe-btn material-btn" onclick="responder('material')" title="Material">
+                    🏛️
+                </button>
+                <button class="swipe-btn imaterial-btn" onclick="responder('imaterial')" title="Imaterial">
+                    ✨
+                </button>
+            </div>
+
+            <div class="feedback-box" id="feedback-box">
+                <p id="feedback-texto"></p>
+            </div>
+        </div>
+
+        <!-- Resultado -->
+        <div id="resultado-final" style="display:none; text-align:center; padding:40px 0;">
+            <h2 style="font-size:2rem; margin-bottom:16px;">🎉 Parabéns!</h2>
+            <div class="estrelas" id="estrelas-final"></div>
+            <p style="font-size:1.5rem; font-weight:700; color:var(--cor-primaria); margin:16px 0;">
+                <span id="pontos-finais">0</span> pontos
+            </p>
+            <p style="color:var(--cor-texto-leve);">Acertos: <span id="acertos-final">0</span>/<span id="total-final">8</span></p>
+            <div class="btn-grupo" style="justify-content:center; margin-top:20px;">
+                <button class="btn btn-primario btn-grande" onclick="jogarNovamente()">🔄 Jogar Novamente</button>
+                <a href="/jogos.html" class="btn btn-outline btn-grande">🎮 Outros Jogos</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>🎶 <strong>Cultura Sergipe</strong> — Preservando memórias, conectando gerações.</p>
+    </footer>
+
+    <div class="toast" id="toast"></div>
+
+    <script src="/js/app.js"></script>
+    <script src="/js/material-imaterial.js"></script>
+</body>
+</html>

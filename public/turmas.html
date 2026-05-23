@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Turmas — Cultura Sergipe</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+    <div class="acessibilidade-bar">
+        <button class="acessibilidade-btn" onclick="toggleTEA()">👁 Modo TEA</button>
+        <button class="acessibilidade-btn" onclick="toggleContraste()">🔲 Alto Contraste</button>
+        <button class="acessibilidade-btn" onclick="aumentarFonte()">A+</button>
+        <button class="acessibilidade-btn" onclick="diminuirFonte()">A-</button>
+    </div>
+
+    <header class="header">
+        <nav class="nav-container">
+            <a href="/" class="logo"><span class="logo-icon">🎶</span><span>Cultura Sergipe</span></a>
+            <div class="nav-links">
+                <a href="/" class="nav-link">Início</a>
+                <a href="/jogos.html" class="nav-link">🎮 Jogos</a>
+                <a href="/wiki.html" class="nav-link">📚 Wiki</a>
+                <a href="/turmas.html" class="nav-link active">🏫 Turmas</a>
+                <a href="/ranking.html" class="nav-link destaque">🏆 Ranking</a>
+            </div>
+        </nav>
+    </header>
+
+    <section class="container">
+        <h2 class="section-title"><span class="emoji">🏫</span> Turmas Virtuais</h2>
+
+        <!-- Tabs -->
+        <div style="display:flex; gap:10px; margin-bottom:24px; flex-wrap:wrap;">
+            <button class="btn btn-primario" onclick="mostrarTabTurma('entrar')">🎓 Entrar numa Turma</button>
+            <button class="btn btn-outline" onclick="mostrarTabTurma('criar')">➕ Criar Turma (Professor)</button>
+            <button class="btn btn-outline" onclick="mostrarTabTurma('minha')">📋 Minha Turma</button>
+        </div>
+
+        <!-- Entrar numa turma -->
+        <div id="tab-entrar">
+            <div class="turma-form">
+                <h3 style="margin-bottom:16px;">🎓 Entrar numa Turma</h3>
+                <p style="color:var(--cor-texto-leve); margin-bottom:16px; font-size:0.9rem;">
+                    Peça o código da turma ao seu professor!
+                </p>
+                <div class="form-grupo">
+                    <label>Código da Turma *</label>
+                    <input type="text" id="codigo-turma" placeholder="Ex: ABC123" maxlength="6" style="text-transform:uppercase; text-align:center; font-size:1.3rem; letter-spacing:5px;">
+                </div>
+                <div class="form-grupo">
+                    <label>Seu Nome *</label>
+                    <input type="text" id="nome-aluno" placeholder="Seu nome completo">
+                </div>
+                <button class="btn btn-primario" onclick="entrarTurma()" style="width:100%;">
+                    🚀 Entrar na Turma
+                </button>
+            </div>
+        </div>
+
+        <!-- Criar turma -->
+        <div id="tab-criar" style="display:none;">
+            <div class="turma-form">
+                <h3 style="margin-bottom:16px;">➕ Criar Nova Turma</h3>
+                <div class="form-grupo">
+                    <label>Nome da Turma *</label>
+                    <input type="text" id="nome-turma" placeholder="Ex: 9º Ano B - História">
+                </div>
+                <div class="form-grupo">
+                    <label>Professor(a) *</label>
+                    <input type="text" id="nome-professor" placeholder="Seu nome">
+                </div>
+                <div class="form-grupo">
+                    <label>Escola *</label>
+                    <input type="text" id="nome-escola" placeholder="Nome da escola">
+                </div>
+                <button class="btn btn-primario" onclick="criarTurma()" style="width:100%;">
+                    ✅ Criar Turma
+                </button>
+            </div>
+
+            <!-- Código gerado -->
+            <div id="turma-criada" style="display:none; text-align:center; margin-top:24px;">
+                <div style="background:var(--cor-secundaria-clara); border:2px solid var(--cor-sucesso); border-radius:var(--raio-borda); padding:30px;">
+                    <p style="font-size:1rem; margin-bottom:10px;">Código da turma:</p>
+                    <p style="font-size:3rem; font-weight:700; letter-spacing:10px; color:var(--cor-secundaria);" id="codigo-gerado"></p>
+                    <p style="font-size:0.85rem; color:var(--cor-texto-leve); margin-top:10px;">Compartilhe este código com seus alunos!</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Minha turma -->
+        <div id="tab-minha" style="display:none;">
+            <div id="info-minha-turma">
+                <p style="text-align:center; color:var(--cor-texto-leve); padding:40px;">
+                    Você ainda não entrou em nenhuma turma.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>🎶 <strong>
