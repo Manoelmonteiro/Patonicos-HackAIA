@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+
+<html class="light" lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CajuCultura - Portal de Jogos</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&amp;family=Be+Vietnam+Pro:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>.woodcut-pattern {
+    background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuA1hthx8H2a1yfbJlif919n0ImK1L_TPuIKwHbCWxKxpo6Bt55ekLKNiv7aKmQ4JAzYA7Nhg4JIflbWsWPrZn6XLpUe-50Pvu8j8ojDNKoGaDUuCQ3JC8twLuSWDNwfxiEumoq5kKT0REio8Ui68GPp8LqNDnCcAiKBlnmYwZb28vjKjONOInyAQf1KcO7_uwCjmI1vhoDvPIj1H0kyyUEMfBByU9mv2srqKgBGOFwE0YWNfmyiLerm-9OWsgW5lCXqtJBMXoo-Yo5_);
+    opacity: 0.05
+    }
+.cultural-wave {
+    mask-image: url("data:image/svg+xml,%3Csvg width='100%25' height='20' viewBox='0 0 1200 20' preserveAspectRatio='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0,10 C150,20 350,0 600,10 C850,20 1050,0 1200,10 L1200,20 L0,20 Z' fill='black'/%3E%3C/svg%3E");
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg width='100%25' height='20' viewBox='0 0 1200 20' preserveAspectRatio='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0,10 C150,20 350,0 600,10 C850,20 1050,0 1200,10 L1200,20 L0,20 Z' fill='black'/%3E%3C/svg%3E")
+    }
+.card-hover-effect {
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)
+    }
+.card-hover-effect:hover {
+    transform: translatey(-8px);
+    box-shadow: 0 16px 32px rgba(26, 28, 30, 0.12)
+    }</style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-primary": "#ffffff",
+                      "surface-bright": "#f9f9fc",
+                      "on-secondary-fixed": "#261a00",
+                      "inverse-primary": "#ffb693",
+                      "surface-container-high": "#e8e8ea",
+                      "on-tertiary": "#ffffff",
+                      "inverse-surface": "#2f3133",
+                      "error-container": "#ffdad6",
+                      "outline-variant": "#e2bfb0",
+                      "on-surface": "#1a1c1e",
+                      "surface": "#f9f9fc",
+                      "secondary-container": "#fdc003",
+                      "on-secondary-container": "#6c5000",
+                      "surface-tint": "#a04100",
+                      "on-surface-variant": "#5a4136",
+                      "error": "#ba1a1a",
+                      "tertiary": "#6833ea",
+                      "surface-container-low": "#f3f3f6",
+                      "on-primary-container": "#572000",
+                      "surface-variant": "#e2e2e5",
+                      "on-secondary-fixed-variant": "#5b4300",
+                      "primary-fixed": "#ffdbcc",
+                      "on-primary-fixed": "#351000",
+                      "secondary-fixed-dim": "#fabd00",
+                      "surface-container-highest": "#e2e2e5",
+                      "surface-container": "#eeeef0",
+                      "on-error-container": "#93000a",
+                      "tertiary-container": "#a286ff",
+                      "surface-container-lowest": "#ffffff",
+                      "on-tertiary-fixed": "#20005f",
+                      "on-primary-fixed-variant": "#7a3000",
+                      "primary-fixed-dim": "#ffb693",
+                      "surface-dim": "#dadadc",
+                      "tertiary-fixed-dim": "#cdbdff",
+                      "primary": "#a04100",
+                      "on-tertiary-container": "#380098",
+                      "secondary-fixed": "#ffdf9e",
+                      "on-tertiary-fixed-variant": "#4f00d0",
+                      "tertiary-fixed": "#e8deff",
+                      "on-secondary": "#ffffff",
+                      "on-background": "#1a1c1e",
+                      "on-error": "#ffffff",
+                      "inverse-on-surface": "#f0f0f3",
+                      "outline": "#8e7164",
+                      "primary-container": "#ff6b00",
+                      "secondary": "#785900",
+                      "background": "#f9f9fc"
+              },
+              "borderRadius": {
+                      "DEFAULT": "8px",
+                      "lg": "12px",
+                      "xl": "16px",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "sm": "12px",
+                      "lg": "48px",
+                      "base": "8px",
+                      "xs": "4px",
+                      "margin-desktop": "64px",
+                      "gutter": "24px",
+                      "md": "24px",
+                      "xl": "80px",
+                      "margin-mobile": "16px"
+              },
+              "fontFamily": {
+                      "headline-lg": ["Plus Jakarta Sans"],
+                      "label-md": ["Be Vietnam Pro"],
+                      "caption": ["Be Vietnam Pro"],
+                      "headline-xl": ["Plus Jakarta Sans"],
+                      "body-lg": ["Be Vietnam Pro"],
+                      "body-md": ["Be Vietnam Pro"],
+                      "headline-md": ["Plus Jakarta Sans"]
+              },
+              "fontSize": {
+                      "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "700"}],
+                      "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                      "caption": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+                      "headline-xl": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}]
+              }
+            },
+          },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-surface min-h-screen flex flex-col font-body-md selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- TopNavBar -->
+<header class="w-full top-0 sticky bg-surface shadow-sm z-50">
+<div class="flex justify-between items-center px-margin-desktop py-base max-w-[1280px] mx-auto">
+<div class="flex items-center gap-lg">
+<span class="font-headline-md text-headline-md text-primary font-bold">CajuCultura</span>
+<nav class="hidden md:flex items-center gap-md">
+<a class="text-primary border-b-2 border-primary font-bold font-body-md text-body-md py-xs" href="#">Home</a>
+<a class="text-on-surface-variant font-medium hover:text-primary transition-colors duration-200 font-body-md text-body-md" href="#">Explore</a>
+<a class="text-on-surface-variant font-medium hover:text-primary transition-colors duration-200 font-body-md text-body-md" href="#">About</a>
+</nav>
+</div>
+<div class="flex items-center gap-md">
+<div class="relative hidden lg:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="pl-10 pr-4 py-2 bg-surface-container-low border-none rounded-full focus:ring-2 focus:ring-primary w-64 text-label-md" placeholder="Buscar jogos..." type="text"/>
+</div>
+<button class="px-md py-2 bg-primary text-on-primary font-bold rounded-full active:scale-95 transition-transform hover:opacity-90">Login</button>
+</div>
+</div>
+</header>
+<main class="flex-grow">
+<!-- Hero Section -->
+<section class="relative bg-primary-fixed-dim overflow-hidden">
+<div class="absolute inset-0 woodcut-pattern"></div>
+<div class="relative max-w-[1280px] mx-auto px-margin-desktop py-xl flex flex-col md:flex-row items-center gap-xl">
+<div class="flex-1 text-center md:text-left">
+<h1 class="font-headline-xl text-headline-xl text-on-primary-fixed mb-md">Pronto para Jogar, Visitante?</h1>
+<p class="font-body-lg text-body-lg text-on-primary-fixed-variant mb-lg opacity-90 max-w-xl">Explore a cultura vibrante de Sergipe através de desafios divertidos. Ganhe pontos, suba no ranking e torne-se um mestre da CajuCultura.</p>
+<div class="flex flex-wrap gap-md justify-center md:justify-start">
+<button class="px-lg py-md bg-primary text-on-primary font-bold rounded-xl shadow-md hover:bg-surface-tint transition-all active:scale-95">Começar Agora</button>
+<button class="px-lg py-md bg-on-primary text-primary border-2 border-primary font-bold rounded-xl hover:bg-primary/5 transition-all">Ver Tutoriais</button>
+</div>
+</div>
+<div class="flex-1 flex justify-center">
+<img alt="Mascote CajuCultura" class="w-full max-w-[400px] drop-shadow-2xl" data-alt="A friendly and vibrant 3D mascot illustration of a person wearing traditional Northeastern Brazilian attire with a modern twist, surrounded by floating stylized cashew fruits and geometric sunbursts. The character is smiling warmly against a clean, soft white background with warm sun-drenched lighting. The visual style is playful and high-end corporate 3D, featuring smooth textures and bright saturated oranges and yellows." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAn-Wne0fBbFfevl7r-UiQY2em98T9Ci5mOrvuinVZItXcbm6zROgs-D388jw2HA1p9D655FRmAWvdvggt-sBSC-u9Jqw8bWrwDot1VqNpYm-tYWn9g4tJpPeuhK6nqgkC6huQkSWnA9n_F0wvfcf_UOYYuya3KE_9HJ8JHmqmcHg_aQjzq7CovUxnO06tmmt3aC8mFQdLhAg0MW3a164sHPYXZnMFiw8GMUXbZHet68ueHzbQGeaZTwPtXBQZ-w_Eiv5kRheMOe_3A"/>
+</div>
+</div>
+<div class="cultural-wave absolute bottom-0 left-0 w-full h-8 bg-surface"></div>
+</section>
+<!-- Main Content Grid -->
+<div class="max-w-[1280px] mx-auto px-margin-desktop py-xl flex flex-col lg:flex-row gap-xl">
+<!-- Left Side: Game Grid -->
+<div class="flex-[2]">
+<div class="flex items-center justify-between mb-lg">
+<h2 class="font-headline-lg text-headline-lg">Modos de Jogo</h2>
+<span class="text-primary font-bold cursor-pointer hover:underline text-body-md">Ver todos</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-md">
+<!-- Quiz Cultural Card -->
+<div class="card-hover-effect group bg-secondary-fixed text-on-secondary-fixed p-lg rounded-xl flex flex-col justify-between h-[320px] relative overflow-hidden">
+<div class="absolute -right-8 -top-8 opacity-20 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-[160px]">quiz</span>
+</div>
+<div class="z-10">
+<span class="px-3 py-1 bg-on-secondary-fixed/10 rounded-full text-caption font-bold mb-md inline-block uppercase tracking-wider">Desafio</span>
+<h3 class="font-headline-md text-headline-md mb-xs">Quiz Cultural</h3>
+<p class="font-body-md opacity-80">O quanto você conhece sobre a terra do Caju? Teste seus conhecimentos.</p>
+</div>
+<button class="z-10 w-fit px-md py-base bg-on-secondary-fixed text-on-secondary font-bold rounded-lg mt-md shadow-sm">Jogar Agora</button>
+</div>
+<!-- Swipe de Cordel Card -->
+<div class="card-hover-effect group bg-tertiary-fixed text-on-tertiary-fixed p-lg rounded-xl flex flex-col justify-between h-[320px] relative overflow-hidden">
+<div class="absolute -right-8 -top-8 opacity-20 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-[160px]">menu_book</span>
+</div>
+<div class="z-10">
+<span class="px-3 py-1 bg-on-tertiary-fixed/10 rounded-full text-caption font-bold mb-md inline-block uppercase tracking-wider">Ritmo</span>
+<h3 class="font-headline-md text-headline-md mb-xs">Swipe de Cordel</h3>
+<p class="font-body-md opacity-80">Siga as rimas e tome decisões rápidas neste jogo de ritmo e poesia.</p>
+</div>
+<button class="z-10 w-fit px-md py-base bg-on-tertiary-fixed text-on-tertiary font-bold rounded-lg mt-md shadow-sm">Jogar Agora</button>
+</div>
+<!-- Jogo da Memória Card (Wide) -->
+<div class="card-hover-effect group bg-primary-fixed text-on-primary-fixed p-lg rounded-xl flex flex-col md:flex-row justify-between md:items-center gap-md col-span-1 md:col-span-2 relative overflow-hidden">
+<div class="absolute right-0 bottom-0 opacity-10 group-hover:scale-105 transition-transform pointer-events-none">
+<span class="material-symbols-outlined text-[240px]">extension</span>
+</div>
+<div class="flex-1 z-10">
+<span class="px-3 py-1 bg-on-primary-fixed/10 rounded-full text-caption font-bold mb-md inline-block uppercase tracking-wider">Memória</span>
+<h3 class="font-headline-md text-headline-md mb-xs">Jogo da Memória</h3>
+<p class="font-body-md opacity-80 max-w-md">Combine ícones típicos, festas e monumentos de Sergipe no menor tempo possível.</p>
+<button class="w-fit px-lg py-md bg-primary text-on-primary font-bold rounded-lg mt-lg shadow-md block">Iniciar Partida</button>
+</div>
+<div class="flex-1 hidden md:flex justify-center z-10">
+<div class="grid grid-cols-2 gap-sm">
+<div class="w-16 h-16 bg-on-primary-fixed/20 rounded-lg flex items-center justify-center"><span class="material-symbols-outlined">set_meal</span></div>
+<div class="w-16 h-16 bg-on-primary-fixed/20 rounded-lg flex items-center justify-center"><span class="material-symbols-outlined">castle</span></div>
+<div class="w-16 h-16 bg-on-primary-fixed/20 rounded-lg flex items-center justify-center"><span class="material-symbols-outlined">music_note</span></div>
+<div class="w-16 h-16 bg-on-primary-fixed/20 rounded-lg flex items-center justify-center"><span class="material-symbols-outlined">eco</span></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Visitor CTA Banner -->
+<div class="mt-xl bg-surface-container-highest rounded-xl p-lg flex flex-col md:flex-row items-center justify-between gap-md border border-outline-variant/30">
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 bg-secondary-container rounded-full flex items-center justify-center text-on-secondary-container shadow-sm">
+<span class="material-symbols-outlined">person_add</span>
+</div>
+<div>
+<p class="font-headline-md text-body-lg font-bold text-on-surface">Jogando como Visitante?</p>
+<p class="text-on-surface-variant font-body-md">Crie uma conta para salvar seu XP e entrar no Ranking!</p>
+</div>
+</div>
+<button class="whitespace-nowrap px-lg py-md bg-primary text-on-primary font-bold rounded-lg shadow-md hover:scale-105 transition-transform active:scale-95">Criar Conta</button>
+</div>
+</div>
+<!-- Right Side: Secondary Section -->
+<aside class="flex-1 flex flex-col gap-lg">
+<!-- Ranking Rápido -->
+<div class="bg-surface-container-low p-md rounded-xl border border-surface-variant">
+<div class="flex items-center gap-xs mb-md">
+<span class="material-symbols-outlined text-secondary">emoji_events</span>
+<h3 class="font-headline-md text-body-lg font-bold">Ranking Rápido</h3>
+</div>
+<div class="space-y-sm">
+<!-- Rank 1 -->
+<div class="flex items-center justify-between p-sm bg-surface-container-lowest rounded-lg shadow-sm border border-secondary/20">
+<div class="flex items-center gap-sm">
+<div class="w-8 h-8 bg-secondary rounded-full flex items-center justify-center text-on-secondary font-bold text-caption">1</div>
+<span class="font-bold text-body-md">Maria_Sergipe</span>
+</div>
+<span class="text-secondary font-bold text-body-md">2,450 XP</span>
+</div>
+<!-- Rank 2 -->
+<div class="flex items-center justify-between p-sm bg-surface-container-lowest rounded-lg shadow-sm">
+<div class="flex items-center gap-sm">
+<div class="w-8 h-8 bg-surface-variant rounded-full flex items-center justify-center text-on-surface-variant font-bold text-caption">2</div>
+<span class="font-medium text-body-md">JoãoAratu</span>
+</div>
+<span class="text-on-surface-variant font-medium text-body-md">2,100 XP</span>
+</div>
+<!-- Rank 3 -->
+<div class="flex items-center justify-between p-sm bg-surface-container-lowest rounded-lg shadow-sm">
+<div class="flex items-center gap-sm">
+<div class="w-8 h-8 bg-surface-variant rounded-full flex items-center justify-center text-on-surface-variant font-bold text-caption">3</div>
+<span class="font-medium text-body-md">CajuKing</span>
+</div>
+<span class="text-on-surface-variant font-medium text-body-md">1,890 XP</span>
+</div>
+</div>
+<button class="w-full mt-md py-xs text-primary font-bold hover:underline text-caption">Ver Ranking Completo</button>
+</div>
+<!-- Últimas Conquistas -->
+<div class="bg-surface-container-low p-md rounded-xl border border-surface-variant">
+<div class="flex items-center gap-xs mb-md">
+<span class="material-symbols-outlined text-tertiary">military_tech</span>
+<h3 class="font-headline-md text-body-lg font-bold">Conquistas Recentes</h3>
+</div>
+<div class="space-y-md">
+<div class="flex gap-sm">
+<div class="w-10 h-10 shrink-0 bg-tertiary-container rounded-lg flex items-center justify-center text-on-tertiary-container">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">workspace_premium</span>
+</div>
+<div>
+<p class="text-label-md leading-tight"><span class="font-bold">Ana_G</span> desbloqueou <span class="text-primary font-bold">Poeta de Cordel</span></p>
+<p class="text-caption text-on-surface-variant">há 5 minutos</p>
+</div>
+</div>
+<div class="flex gap-sm">
+<div class="w-10 h-10 shrink-0 bg-secondary-container rounded-lg flex items-center justify-center text-on-secondary-container">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+</div>
+<div>
+<p class="text-label-md leading-tight"><span class="font-bold">Beto88</span> alcançou <span class="text-primary font-bold">Nível 10</span></p>
+<p class="text-caption text-on-surface-variant">há 12 minutos</p>
+</div>
+</div>
+<div class="flex gap-sm">
+<div class="w-10 h-10 shrink-0 bg-primary-container rounded-lg flex items-center justify-center text-on-primary-container">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">local_fire_department</span>
+</div>
+<div>
+<p class="text-label-md leading-tight"><span class="font-bold">User42</span> completou <span class="text-primary font-bold">Streak 7 Dias</span></p>
+<p class="text-caption text-on-surface-variant">há 24 minutos</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Featured Image / Cultural Moment -->
+<div class="rounded-xl overflow-hidden shadow-sm h-48 relative group cursor-pointer">
+<img alt="Cultura Sergipana" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="A cinematic, sun-drenched photograph capturing a close-up of traditional colorful Brazilian handicrafts and lacework from Sergipe. The lighting is warm and golden, highlighting the intricate textures of the threads and wooden tools. The background is a soft-focus vista of a colonial street with pastel-colored buildings. The mood is nostalgic, warm, and authentic to the rich cultural heritage of the Northeast." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCrJae5ZxWah84h00u__cDTu0NY375kkLPGppnjuTLm2Fov_WG9ldlb2h3061z0JJvyRH6taBIDV143LBu7zy4-KswUq-SQwcbUUY8vTHeOcwCM3-KFwwt-KmiNOvet8FzGW4Ph7V2x0fmV_wEzj5cW_XOqGjwAq6vOMBVeTvFG7bVV3FWqjOuF_gKqaXouQYvsYRLeCwoS0i5h7LWzVqup1B2Yyc6mx7q_PbXQMsfEVz4_rFRbg4M1AWZTKj6uaR7f04cc3h1X9pSe"/>
+<div class="absolute inset-0 bg-gradient-to-t from-on-surface/80 to-transparent flex flex-col justify-end p-md">
+<span class="text-on-primary font-bold text-body-md">Curiosidade do Dia</span>
+<p class="text-on-primary/80 text-caption">Você sabia que a Renda Irlandesa de Divina Pastora é Patrimônio Cultural?</p>
+</div>
+</div>
+</aside>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full mt-auto bg-surface-container-highest">
+<div class="flex flex-col md:flex-row justify-between items-center px-margin-desktop py-lg max-w-[1280px] mx-auto">
+<div class="mb-md md:mb-0">
+<span class="font-headline-md text-headline-md text-on-surface-variant">CajuCultura</span>
+<p class="font-caption text-caption text-on-surface-variant mt-xs">© 2024 CajuCultura. Celebrating Northeastern Heritage.</p>
+</div>
+<div class="flex gap-lg">
+<a class="font-caption text-caption text-on-surface-variant hover:text-primary transition-opacity underline" href="#">Privacy Policy</a>
+<a class="font-caption text-caption text-on-surface-variant hover:text-primary transition-opacity underline" href="#">Terms of Service</a>
+<a class="font-caption text-caption text-on-surface-variant hover:text-primary transition-opacity underline" href="#">Help Center</a>
+<a class="font-caption text-caption text-on-surface-variant hover:text-primary transition-opacity underline" href="#">Contact Us</a>
+</div>
+</div>
+</footer>
+<script>
+        // Micro-interactions for card hovers or buttons
+        document.querySelectorAll('button').forEach(button => {
+            button.addEventListener('mouseenter', () => {
+                // Future implementation: play soft hover sound
+            });
+        });
+
+        // Simple smooth scroll for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body></html>

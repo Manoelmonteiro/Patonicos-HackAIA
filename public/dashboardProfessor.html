@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+
+<html class="light" lang="pt-br"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CajuCultura - Teacher Dashboard</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&amp;family=Be+Vietnam+Pro:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<!-- Icons -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-tertiary-fixed": "#20005f",
+                    "secondary-fixed": "#ffdf9e",
+                    "inverse-primary": "#ffb693",
+                    "on-error-container": "#93000a",
+                    "surface-bright": "#f9f9fc",
+                    "surface-container": "#eeeef0",
+                    "surface-variant": "#e2e2e5",
+                    "on-error": "#ffffff",
+                    "error-container": "#ffdad6",
+                    "on-background": "#1a1c1e",
+                    "outline": "#8e7164",
+                    "on-secondary-fixed-variant": "#5b4300",
+                    "background": "#f9f9fc",
+                    "on-tertiary-container": "#380098",
+                    "primary": "#a04100",
+                    "on-primary-fixed": "#351000",
+                    "tertiary": "#6833ea",
+                    "on-primary-container": "#572000",
+                    "outline-variant": "#e2bfb0",
+                    "primary-container": "#ff6b00",
+                    "on-surface": "#1a1c1e",
+                    "inverse-on-surface": "#f0f0f3",
+                    "error": "#ba1a1a",
+                    "on-surface-variant": "#5a4136",
+                    "on-tertiary": "#ffffff",
+                    "secondary": "#785900",
+                    "surface-container-lowest": "#ffffff",
+                    "on-primary-fixed-variant": "#7a3000",
+                    "secondary-fixed-dim": "#fabd00",
+                    "on-primary": "#ffffff",
+                    "primary-fixed-dim": "#ffb693",
+                    "surface-tint": "#a04100",
+                    "surface": "#f9f9fc",
+                    "inverse-surface": "#2f3133",
+                    "primary-fixed": "#ffdbcc",
+                    "on-secondary-fixed": "#261a00",
+                    "surface-dim": "#dadadc",
+                    "tertiary-fixed-dim": "#cdbdff",
+                    "secondary-container": "#fdc003",
+                    "tertiary-fixed": "#e8deff",
+                    "on-secondary-container": "#6c5000",
+                    "on-secondary": "#ffffff",
+                    "surface-container-low": "#f3f3f6",
+                    "tertiary-container": "#a286ff",
+                    "surface-container-highest": "#e2e2e5",
+                    "surface-container-high": "#e8e8ea",
+                    "on-tertiary-fixed-variant": "#4f00d0"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "md": "24px",
+                    "xs": "4px",
+                    "margin-mobile": "16px",
+                    "margin-desktop": "64px",
+                    "lg": "48px",
+                    "base": "8px",
+                    "sm": "12px",
+                    "gutter": "24px",
+                    "xl": "80px"
+            },
+            "fontFamily": {
+                    "headline-lg": ["Plus Jakarta Sans"],
+                    "body-md": ["Be Vietnam Pro"],
+                    "caption": ["Be Vietnam Pro"],
+                    "headline-xl": ["Plus Jakarta Sans"],
+                    "body-lg": ["Be Vietnam Pro"],
+                    "headline-md": ["Plus Jakarta Sans"],
+                    "label-md": ["Be Vietnam Pro"]
+            },
+            "fontSize": {
+                    "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "caption": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+                    "headline-xl": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .custom-chart-gradient {
+            background: linear-gradient(180deg, rgba(255, 107, 0, 0.1) 0%, rgba(255, 107, 0, 0) 100%);
+        }
+        .pattern-overlay {
+            background-image: radial-gradient(circle at 1px 1px, #e2bfb0 1px, transparent 0);
+            background-size: 24px 24px;
+            opacity: 0.15;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md selection:bg-primary-container selection:text-on-primary-container min-h-screen flex">
+<!-- SideNavBar Anchor -->
+<aside class="hidden md:flex flex-col gap-base p-md border-r border-outline-variant bg-surface-container-low h-screen w-64 fixed left-0 top-0 shadow-sm z-50 overflow-y-auto">
+<div class="mb-lg">
+<h1 class="font-headline-md text-headline-md text-primary font-bold">Meu Caju</h1>
+<p class="font-label-md text-label-md text-on-surface-variant opacity-70">Cultural Hub</p>
+</div>
+<nav class="flex-1 flex flex-col gap-xs">
+<!-- Active Tab: Dashboard -->
+<a class="flex items-center gap-sm px-4 py-3 bg-primary-container text-on-primary-container font-bold rounded-lg transition-all duration-150 translate-x-1" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+<span class="font-label-md text-label-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-sm px-4 py-3 text-on-surface-variant hover:bg-surface-variant rounded-lg transition-all duration-200" href="#">
+<span class="material-symbols-outlined">groups</span>
+<span class="font-label-md text-label-md">Turmas</span>
+</a>
+<a class="flex items-center gap-sm px-4 py-3 text-on-surface-variant hover:bg-surface-variant rounded-lg transition-all duration-200" href="#">
+<span class="material-symbols-outlined">bar_chart</span>
+<span class="font-label-md text-label-md">Relatórios</span>
+</a>
+<a class="flex items-center gap-sm px-4 py-3 text-on-surface-variant hover:bg-surface-variant rounded-lg transition-all duration-200" href="#">
+<span class="material-symbols-outlined">library_books</span>
+<span class="font-label-md text-label-md">Conteúdos</span>
+</a>
+<a class="flex items-center gap-sm px-4 py-3 text-on-surface-variant hover:bg-surface-variant rounded-lg transition-all duration-200" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-md text-label-md">Settings</span>
+</a>
+</nav>
+<div class="mt-auto pt-md">
+<button class="w-full bg-primary-container hover:bg-primary-fixed-dim text-on-primary-container font-bold py-3 rounded-xl transition-all active:scale-95 shadow-md flex items-center justify-center gap-xs">
+<span class="material-symbols-outlined">add</span>
+                Submit Work
+            </button>
+</div>
+</aside>
+<!-- Main Content Wrapper -->
+<main class="flex-1 ml-0 md:ml-64 min-h-screen relative overflow-x-hidden">
+<!-- TopNavBar Anchor -->
+<header class="bg-primary shadow-md sticky top-0 z-40 h-20 flex items-center">
+<div class="flex justify-between items-center w-full px-margin-mobile md:px-margin-desktop max-w-[1280px] mx-auto">
+<div class="flex items-center gap-md">
+<span class="font-headline-md text-headline-md font-bold text-on-primary">Painel do Professor</span>
+</div>
+<div class="flex items-center gap-md">
+<div class="hidden md:flex bg-on-primary/10 rounded-full px-4 py-2 items-center gap-sm">
+<span class="material-symbols-outlined text-on-primary">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-on-primary placeholder:text-on-primary/60 font-body-md w-64" placeholder="Buscar por alunos ou turmas..." type="text"/>
+</div>
+<div class="flex items-center gap-base">
+<button class="text-on-primary hover:bg-primary-fixed-dim/20 p-2 rounded-full transition-colors active:scale-95">
+<span class="material-symbols-outlined">help</span>
+</button>
+<button class="text-on-primary hover:bg-primary-fixed-dim/20 p-2 rounded-full transition-colors active:scale-95">
+<span class="material-symbols-outlined">accessibility</span>
+</button>
+<div class="h-10 w-10 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container font-bold shadow-sm cursor-pointer border-2 border-on-primary/20">
+                            TR
+                        </div>
+</div>
+</div>
+</div>
+</header>
+<!-- Canvas Area -->
+<div class="p-margin-mobile md:p-margin-desktop max-w-[1280px] mx-auto">
+<!-- Welcome Header -->
+<div class="mb-lg flex flex-col md:flex-row md:items-end justify-between gap-md">
+<div>
+<h2 class="font-headline-xl text-headline-xl text-primary mb-xs">Olá, Professor Ricardo!</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Veja o progresso das suas turmas e novos conteúdos culturais.</p>
+</div>
+<div class="flex gap-sm">
+<div class="bg-surface-container-high rounded-xl px-4 py-3 flex items-center gap-sm shadow-sm">
+<span class="material-symbols-outlined text-primary">calendar_today</span>
+<span class="font-label-md text-label-md">Março 2024</span>
+</div>
+</div>
+</div>
+<!-- Dashboard Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-gutter mb-lg">
+<!-- Analytics Card -->
+<div class="lg:col-span-2 bg-surface-container-lowest border border-outline-variant rounded-xl p-md shadow-[0px_2px_4px_rgba(26,28,30,0.04)] relative overflow-hidden group">
+<div class="pattern-overlay absolute inset-0 pointer-events-none"></div>
+<div class="flex items-center justify-between mb-md relative z-10">
+<h3 class="font-headline-md text-headline-md text-on-surface">Progresso Geral</h3>
+<select class="bg-surface-container-low border-none rounded-lg font-label-md text-label-md focus:ring-primary py-1 px-3">
+<option>Últimos 7 dias</option>
+<option>Últimos 30 dias</option>
+</select>
+</div>
+<div class="h-64 relative z-10 flex flex-col justify-end">
+<div class="flex items-end justify-between h-48 gap-xs">
+<!-- Visual Chart Mockup -->
+<div class="flex-1 bg-primary/20 rounded-t-lg transition-all duration-300 hover:bg-primary/40 h-[40%] group/bar relative">
+<span class="absolute -top-8 left-1/2 -translate-x-1/2 opacity-0 group-hover/bar:opacity-100 bg-primary text-on-primary px-2 py-1 rounded text-caption font-bold transition-opacity">40%</span>
+</div>
+<div class="flex-1 bg-primary/30 rounded-t-lg transition-all duration-300 hover:bg-primary/50 h-[65%] group/bar relative">
+<span class="absolute -top-8 left-1/2 -translate-x-1/2 opacity-0 group-hover/bar:opacity-100 bg-primary text-on-primary px-2 py-1 rounded text-caption font-bold transition-opacity">65%</span>
+</div>
+<div class="flex-1 bg-primary/10 rounded-t-lg transition-all duration-300 hover:bg-primary/30 h-[25%] group/bar relative">
+<span class="absolute -top-8 left-1/2 -translate-x-1/2 opacity-0 group-hover/bar:opacity-100 bg-primary text-on-primary px-2 py-1 rounded text-caption font-bold transition-opacity">25%</span>
+</div>
+<div class="flex-1 bg-primary rounded-t-lg transition-all duration-300 hover:brightness-110 h-[90%] group/bar relative">
+<span class="absolute -top-8 left-1/2 -translate-x-1/2 opacity-0 group-hover/bar:opacity-100 bg-primary text-on-primary px-2 py-1 rounded text-caption font-bold transition-opacity">90%</span>
+</div>
+<div class="flex-1 bg-primary/40 rounded-t-lg transition-all duration-300 hover:bg-primary/60 h-[70%] group/bar relative">
+<span class="absolute -top-8 left-1/2 -translate-x-1/2 opacity-0 group-hover/bar:opacity-100 bg-primary text-on-primary px-2 py-1 rounded text-caption font-bold transition-opacity">70%</span>
+</div>
+<div class="flex-1 bg-primary/20 rounded-t-lg transition-all duration-300 hover:bg-primary/40 h-[55%] group/bar relative">
+<span class="absolute -top-8 left-1/2 -translate-x-1/2 opacity-0 group-hover/bar:opacity-100 bg-primary text-on-primary px-2 py-1 rounded text-caption font-bold transition-opacity">55%</span>
+</div>
+<div class="flex-1 bg-primary/60 rounded-t-lg transition-all duration-300 hover:bg-primary/80 h-[80%] group/bar relative">
+<span class="absolute -top-8 left-1/2 -translate-x-1/2 opacity-0 group-hover/bar:opacity-100 bg-primary text-on-primary px-2 py-1 rounded text-caption font-bold transition-opacity">80%</span>
+</div>
+</div>
+<div class="flex justify-between mt-sm text-caption text-on-surface-variant font-medium">
+<span>SEG</span><span>TER</span><span>QUA</span><span>QUI</span><span>SEX</span><span>SÁB</span><span>DOM</span>
+</div>
+</div>
+</div>
+<!-- Gamified Quizzes Section -->
+<div class="bg-secondary-container border border-outline-variant rounded-xl p-md shadow-lg flex flex-col justify-between overflow-hidden relative">
+<div class="absolute -right-12 -top-12 w-48 h-48 bg-white/10 rounded-full blur-3xl"></div>
+<div>
+<div class="flex items-center gap-sm mb-base">
+<span class="material-symbols-outlined text-on-secondary-container" style="font-variation-settings: 'FILL' 1;">emoji_events</span>
+<span class="font-label-md text-label-md text-on-secondary-container uppercase tracking-wider">Novo Quiz Cultural</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-secondary-container mb-sm">A Magia do Cordel</h3>
+<p class="font-body-md text-body-md text-on-secondary-container/80 mb-md">Atribua um desafio gamificado sobre literatura de cordel e xilogravura para suas turmas.</p>
+</div>
+<button class="w-full bg-on-secondary-container text-white font-bold py-3 rounded-xl transition-all hover:scale-105 active:scale-95 shadow-md">
+                        Assign Now
+                    </button>
+</div>
+</div>
+<!-- Turmas Grid -->
+<div class="mb-lg">
+<div class="flex items-center justify-between mb-md">
+<h3 class="font-headline-md text-headline-md text-on-surface">Suas Turmas</h3>
+<button class="text-primary font-bold flex items-center gap-xs hover:underline decoration-2 transition-all">
+                        Ver todas as turmas <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter">
+<!-- Class Card 1 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-md shadow-sm hover:shadow-md hover:-translate-y-1 transition-all group cursor-pointer">
+<div class="flex items-start justify-between mb-md">
+<div class="p-3 bg-primary/10 rounded-lg group-hover:bg-primary/20 transition-colors">
+<span class="material-symbols-outlined text-primary">school</span>
+</div>
+<span class="font-label-md text-label-md bg-green-100 text-green-800 px-2 py-1 rounded-full">Ativo</span>
+</div>
+<h4 class="font-headline-md text-headline-md text-on-surface mb-xs">6º Ano A</h4>
+<p class="font-body-md text-body-md text-on-surface-variant mb-md">Ensino Fundamental II</p>
+<div class="flex items-center gap-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]">group</span>
+<span class="font-label-md text-label-md">32 Alunos</span>
+</div>
+<div class="mt-md pt-md border-t border-outline-variant">
+<div class="flex justify-between items-center mb-xs">
+<span class="font-caption text-caption">Engajamento</span>
+<span class="font-caption text-caption text-primary font-bold">85%</span>
+</div>
+<div class="w-full bg-primary/10 h-2 rounded-full overflow-hidden">
+<div class="bg-primary h-full rounded-full" style="width: 85%"></div>
+</div>
+</div>
+</div>
+<!-- Class Card 2 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-md shadow-sm hover:shadow-md hover:-translate-y-1 transition-all group cursor-pointer">
+<div class="flex items-start justify-between mb-md">
+<div class="p-3 bg-primary/10 rounded-lg group-hover:bg-primary/20 transition-colors">
+<span class="material-symbols-outlined text-primary">school</span>
+</div>
+<span class="font-label-md text-label-md bg-green-100 text-green-800 px-2 py-1 rounded-full">Ativo</span>
+</div>
+<h4 class="font-headline-md text-headline-md text-on-surface mb-xs">7º Ano B</h4>
+<p class="font-body-md text-body-md text-on-surface-variant mb-md">Ensino Fundamental II</p>
+<div class="flex items-center gap-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]">group</span>
+<span class="font-label-md text-label-md">28 Alunos</span>
+</div>
+<div class="mt-md pt-md border-t border-outline-variant">
+<div class="flex justify-between items-center mb-xs">
+<span class="font-caption text-caption">Engajamento</span>
+<span class="font-caption text-caption text-primary font-bold">62%</span>
+</div>
+<div class="w-full bg-primary/10 h-2 rounded-full overflow-hidden">
+<div class="bg-primary h-full rounded-full" style="width: 62%"></div>
+</div>
+</div>
+</div>
+<!-- Class Card 3 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-md shadow-sm hover:shadow-md hover:-translate-y-1 transition-all group cursor-pointer">
+<div class="flex items-start justify-between mb-md">
+<div class="p-3 bg-primary/10 rounded-lg group-hover:bg-primary/20 transition-colors">
+<span class="material-symbols-outlined text-primary">school</span>
+</div>
+<span class="font-label-md text-label-md bg-amber-100 text-amber-800 px-2 py-1 rounded-full">Atenção</span>
+</div>
+<h4 class="font-headline-md text-headline-md text-on-surface mb-xs">8º Ano C</h4>
+<p class="font-body-md text-body-md text-on-surface-variant mb-md">Ensino Fundamental II</p>
+<div class="flex items-center gap-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]">group</span>
+<span class="font-label-md text-label-md">35 Alunos</span>
+</div>
+<div class="mt-md pt-md border-t border-outline-variant">
+<div class="flex justify-between items-center mb-xs">
+<span class="font-caption text-caption">Engajamento</span>
+<span class="font-caption text-caption text-error font-bold">45%</span>
+</div>
+<div class="w-full bg-primary/10 h-2 rounded-full overflow-hidden">
+<div class="bg-error h-full rounded-full" style="width: 45%"></div>
+</div>
+</div>
+</div>
+<!-- Add Class Placeholder -->
+<div class="border-2 border-dashed border-outline-variant rounded-xl p-md flex flex-col items-center justify-center gap-sm hover:bg-surface-variant/20 transition-all cursor-pointer group">
+<div class="h-12 w-12 rounded-full bg-surface-container-high flex items-center justify-center text-on-surface-variant group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined">add</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface-variant font-bold">Criar Nova Turma</span>
+</div>
+</div>
+</div>
+<!-- Content Spotlight -->
+<section class="mb-xl">
+<div class="flex items-center justify-between mb-md">
+<h3 class="font-headline-md text-headline-md text-on-surface">Conteúdos Recomendados</h3>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<div class="flex bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden shadow-sm">
+<div class="w-1/3 min-h-[160px] relative">
+<img class="absolute inset-0 w-full h-full object-cover" data-alt="A vibrant digital illustration of Northeastern Brazilian folklore characters, including a smiling cow and a cordel poet, in a bright sun-drenched landscape. The art style is inspired by traditional woodblock prints with a modern flat design approach, using a palette of burnt orange, warm yellow, and clean whites." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDZbDmTlqjqpggs6QqmGNTBD7cPvvdDWOYZrJr1fbcuaMT0H5_nKscQCkSjDMaqGmuU01ezJ3dGp8kOhSAuk5ow7hYAQVne4Y57rKPDJgmMEwCGl7KP0TvEi2OyU_6uJJJZHUdURBwoZfcRVT80ScBsUF38qaPCmGTl6pRYvJYauU6-3V1DUoswdOg4di0EVTkWD9b33H6swzRPao7DQeWjuTyaJ6nxoNaHjjEnjqw_Xu5TOhVCwFjJvKKPsGFOiK5vX12Fd_LF1YHa"/>
+</div>
+<div class="w-2/3 p-md flex flex-col justify-between">
+<div>
+<h5 class="font-headline-md text-headline-md text-on-surface text-lg leading-tight mb-xs">Folclore e Mitologia Regional</h5>
+<p class="font-caption text-caption text-on-surface-variant line-clamp-2">Explora as raízes dos mitos locais e como eles influenciam a arte moderna.</p>
+</div>
+<div class="flex items-center justify-between mt-sm">
+<span class="text-caption font-bold text-tertiary uppercase">Vídeo-Aula</span>
+<button class="text-primary font-bold text-caption flex items-center">
+                                    Acessar <span class="material-symbols-outlined text-[16px] ml-1">open_in_new</span>
+</button>
+</div>
+</div>
+</div>
+<div class="flex bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden shadow-sm">
+<div class="w-1/3 min-h-[160px] relative">
+<img class="absolute inset-0 w-full h-full object-cover" data-alt="A detailed macro photograph of a textured book cover with traditional Brazilian Xilogravura artwork, featuring sharp lines and high contrast. The image has soft studio lighting and is placed in a bright, modern light-mode setting that emphasizes the artisanal quality of the book and its vibrant orange accents." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDQgsHjQnyvnNN3F0zIoE4Qb6nDFhfzIEd2AZQzMJ7oFLJO6qOF_NtnLQcacnbutvCrXUiDHJOBcj4pwFbxb7Qe4VGmk8Z9_vRIL46A9T8pq04oT9w7gWGec_vuNWCxhZIuPLaO1FU_ttUnXZJ9cOBcJ8VHDJdbWMA9cmnhud8qT3hzn794-EF-ZYw2bNXNDUVe3aQra6dxRWDnac_rLcRtpxGfgo_9B6_UuM0_v6RmryU5i7GWZbCX6dit_XxpTWkoG0SyOuMycM8R"/>
+</div>
+<div class="w-2/3 p-md flex flex-col justify-between">
+<div>
+<h5 class="font-headline-md text-headline-md text-on-surface text-lg leading-tight mb-xs">Guia de Xilogravura Digital</h5>
+<p class="font-caption text-caption text-on-surface-variant line-clamp-2">Atividade prática para alunos transformarem desenhos manuais em arte digital.</p>
+</div>
+<div class="flex items-center justify-between mt-sm">
+<span class="text-caption font-bold text-tertiary uppercase">E-book</span>
+<button class="text-primary font-bold text-caption flex items-center">
+                                    Baixar <span class="material-symbols-outlined text-[16px] ml-1">download</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- Footer Anchor -->
+<footer class="bg-surface-container-highest border-t border-outline-variant w-full py-lg">
+<div class="max-w-[1280px] mx-auto px-margin-mobile md:px-margin-desktop grid grid-cols-1 md:grid-cols-2 gap-md">
+<div class="flex flex-col gap-base">
+<h4 class="font-headline-md text-headline-md text-primary font-bold">CajuCultura</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">© 2024 CajuCultura. Preserving Northeastern Heritage.</p>
+</div>
+<div class="flex flex-wrap gap-md md:justify-end items-center">
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-all" href="#">Cultural Manifesto</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-all" href="#">Artist Portal</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-all" href="#">Terms of Service</a>
+</div>
+</div>
+</footer>
+<!-- Mobile BottomNavBar Anchor (Hidden on desktop) -->
+<div class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-margin-mobile pb-4 pt-2 bg-surface shadow-[0px_-4px_16px_rgba(26,28,30,0.08)] rounded-t-xl">
+<div class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-full px-6 py-1">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="font-label-md text-label-md">Home</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-variant/50 px-4 py-1 rounded-full">
+<span class="material-symbols-outlined">emoji_events</span>
+<span class="font-label-md text-label-md">Ranking</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-variant/50 px-4 py-1 rounded-full">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-md text-label-md">Profile</span>
+</div>
+</div>
+</main>
+<script>
+        // Simple micro-interaction for cards
+        document.querySelectorAll('.hover\\:-translate-y-1').forEach(card => {
+            card.addEventListener('mousedown', () => {
+                card.style.transform = 'scale(0.98)';
+            });
+            card.addEventListener('mouseup', () => {
+                card.style.transform = '';
+            });
+        });
+    </script>
+</body></html>

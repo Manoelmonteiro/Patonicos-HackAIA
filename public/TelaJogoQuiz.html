@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+
+<html class="light" lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&amp;family=Be+Vietnam+Pro:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-fixed": "#20005f",
+                        "secondary-fixed": "#ffdf9e",
+                        "inverse-primary": "#ffb693",
+                        "on-error-container": "#93000a",
+                        "surface-bright": "#f9f9fc",
+                        "surface-container": "#eeeef0",
+                        "surface-variant": "#e2e2e5",
+                        "on-error": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "on-background": "#1a1c1e",
+                        "outline": "#8e7164",
+                        "on-secondary-fixed-variant": "#5b4300",
+                        "background": "#f9f9fc",
+                        "on-tertiary-container": "#380098",
+                        "primary": "#a04100",
+                        "on-primary-fixed": "#351000",
+                        "tertiary": "#6833ea",
+                        "on-primary-container": "#572000",
+                        "outline-variant": "#e2bfb0",
+                        "primary-container": "#ff6b00",
+                        "on-surface": "#1a1c1e",
+                        "inverse-on-surface": "#f0f0f3",
+                        "error": "#ba1a1a",
+                        "on-surface-variant": "#5a4136",
+                        "on-tertiary": "#ffffff",
+                        "secondary": "#785900",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary-fixed-variant": "#7a3000",
+                        "secondary-fixed-dim": "#fabd00",
+                        "on-primary": "#ffffff",
+                        "primary-fixed-dim": "#ffb693",
+                        "surface-tint": "#a04100",
+                        "surface": "#f9f9fc",
+                        "inverse-surface": "#2f3133",
+                        "primary-fixed": "#ffdbcc",
+                        "on-secondary-fixed": "#261a00",
+                        "surface-dim": "#dadadc",
+                        "tertiary-fixed-dim": "#cdbdff",
+                        "secondary-container": "#fdc003",
+                        "tertiary-fixed": "#e8deff",
+                        "on-secondary-container": "#6c5000",
+                        "on-secondary": "#ffffff",
+                        "surface-container-low": "#f3f3f6",
+                        "tertiary-container": "#a286ff",
+                        "surface-container-highest": "#e2e2e5",
+                        "surface-container-high": "#e8e8ea",
+                        "on-tertiary-fixed-variant": "#4f00d0"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "md": "24px",
+                        "xs": "4px",
+                        "margin-mobile": "16px",
+                        "margin-desktop": "64px",
+                        "lg": "48px",
+                        "base": "8px",
+                        "sm": "12px",
+                        "gutter": "24px",
+                        "xl": "80px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Plus Jakarta Sans"],
+                        "body-md": ["Be Vietnam Pro"],
+                        "caption": ["Be Vietnam Pro"],
+                        "headline-lg-mobile": ["Plus Jakarta Sans"],
+                        "headline-xl": ["Plus Jakarta Sans"],
+                        "body-lg": ["Be Vietnam Pro"],
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "label-md": ["Be Vietnam Pro"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "caption": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "700"}],
+                        "headline-xl": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            -webkit-tap-highlight-color: transparent;
+            user-select: none;
+        }
+        .woodcut-bg {
+            background-image: radial-gradient(circle at 2px 2px, rgba(160, 65, 0, 0.03) 1px, transparent 0);
+            background-size: 24px 24px;
+        }
+        .safe-area-top { padding-top: env(safe-area-inset-top); }
+        .safe-area-bottom { padding-bottom: env(safe-area-inset-bottom); }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background font-body-md text-on-surface overflow-hidden">
+<!-- Header Section (Suppresses TopNavBar for Focus) -->
+<header class="safe-area-top bg-surface-container-lowest px-margin-mobile py-base flex flex-col gap-xs sticky top-0 z-20">
+<div class="flex items-center justify-between h-10 mb-2">
+<button aria-label="Voltar" class="w-10 h-10 flex items-center justify-center text-on-surface-variant hover:bg-surface-variant/20 rounded-full transition-colors active:scale-95">
+<span class="material-symbols-outlined">close</span>
+</button>
+<div class="flex items-center gap-base px-sm py-xs bg-secondary-fixed rounded-full">
+<span class="material-symbols-outlined text-on-secondary-container" style="font-variation-settings: 'FILL' 1;">stars</span>
+<span class="font-label-md text-label-md text-on-secondary-container">1,240 XP</span>
+</div>
+<div class="w-10 h-10 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">timer</span>
+</div>
+</div>
+<!-- Gamified Progress Bar -->
+<div class="w-full h-3 bg-surface-variant rounded-full overflow-hidden mb-2">
+<div class="h-full bg-primary-container transition-all duration-700 ease-out rounded-full" id="progress-bar" style="width: 45%;"></div>
+</div>
+</header>
+<main class="flex flex-col h-[calc(100vh-140px)] overflow-y-auto px-margin-mobile pt-sm pb-xl woodcut-bg">
+<!-- Question Content -->
+<section class="mb-md animate-in fade-in slide-in-from-bottom-4 duration-500">
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-on-background text-center px-xs mb-md">
+                Qual destes ritmos é originário do Sertão nordestino?
+            </h1>
+<!-- Illustration Area -->
+<div class="relative w-full aspect-[4/3] rounded-xl overflow-hidden shadow-sm bg-surface-container-high group">
+<img class="w-full h-full object-cover" data-alt="A clean, minimalist flat design illustration of a traditional Forró trio playing accordion, zabumba, and triangle. The characters are stylized with soft rounded shapes and warm, sun-drenched orange and yellow tones. The background is a crisp white with subtle, low-opacity geometric cashew patterns. The overall lighting is bright and cheerful, maintaining a high-contrast, accessible visual style for modern educational apps." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAA1RMrTdqgvI3UKYUIvsLT_Iumk0KHMjsABlu0SkG3I2-5g9XgtS_TJKX3Utt_I5A4vQSsUAhGmRXSNIq6gdm8_EqdscrWfic5uRBLaTA_G3-Bz8L00eH91gA3e2RHg4_Q6mQdHEaklTiTLTc_37-gpvQ0ezINAWc5OOXYGFYHdyPdug-g1qAwt8i2kMfzy4KVtCCU4ldlxJMNowOSyCEsJqZTVvPRZg07F10xr16aBid1s0KGhDjcIHTlo_jt7UGoEx6qyhBTvl1I"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none"></div>
+</div>
+</section>
+<!-- 2x2 Answer Grid -->
+<div class="grid grid-cols-2 gap-sm w-full mb-lg">
+<!-- Option 1: Blue -->
+<button class="group h-32 flex flex-col items-center justify-center gap-xs bg-[#E3F2FD] border-b-4 border-[#90CAF9] active:border-b-0 active:translate-y-1 rounded-xl transition-all duration-150 p-base" onclick="handleAnswer(this)">
+<div class="w-10 h-10 bg-white/60 rounded-full flex items-center justify-center mb-1 group-active:scale-90 transition-transform">
+<span class="text-[#1E88E5] font-bold text-headline-md">A</span>
+</div>
+<span class="font-label-md text-label-md text-[#0D47A1] text-center leading-tight">Samba</span>
+</button>
+<!-- Option 2: Green -->
+<button class="group h-32 flex flex-col items-center justify-center gap-xs bg-[#E8F5E9] border-b-4 border-[#A5D6A7] active:border-b-0 active:translate-y-1 rounded-xl transition-all duration-150 p-base" onclick="handleAnswer(this)">
+<div class="w-10 h-10 bg-white/60 rounded-full flex items-center justify-center mb-1 group-active:scale-90 transition-transform">
+<span class="text-[#43A047] font-bold text-headline-md">B</span>
+</div>
+<span class="font-label-md text-label-md text-[#1B5E20] text-center leading-tight">Xote</span>
+</button>
+<!-- Option 3: Yellow -->
+<button class="group h-32 flex flex-col items-center justify-center gap-xs bg-[#FFFDE7] border-b-4 border-[#FFF59D] active:border-b-0 active:translate-y-1 rounded-xl transition-all duration-150 p-base" onclick="handleAnswer(this)">
+<div class="w-10 h-10 bg-white/60 rounded-full flex items-center justify-center mb-1 group-active:scale-90 transition-transform">
+<span class="text-[#FBC02D] font-bold text-headline-md">C</span>
+</div>
+<span class="font-label-md text-label-md text-[#F57F17] text-center leading-tight">Baião</span>
+</button>
+<!-- Option 4: Pink -->
+<button class="group h-32 flex flex-col items-center justify-center gap-xs bg-[#FCE4EC] border-b-4 border-[#F48FB1] active:border-b-0 active:translate-y-1 rounded-xl transition-all duration-150 p-base" onclick="handleAnswer(this)">
+<div class="w-10 h-10 bg-white/60 rounded-full flex items-center justify-center mb-1 group-active:scale-90 transition-transform">
+<span class="text-[#D81B60] font-bold text-headline-md">D</span>
+</div>
+<span class="font-label-md text-label-md text-[#880E4F] text-center leading-tight">Maracatu</span>
+</button>
+</div>
+</main>
+<!-- Contextual Action Bar (Hidden until answer chosen) -->
+<div class="fixed bottom-0 left-0 w-full bg-surface-container-lowest border-t border-outline-variant p-margin-mobile safe-area-bottom z-30 transition-transform translate-y-full" id="check-action">
+<button class="w-full bg-primary-container text-on-primary font-bold py-md rounded-xl text-body-lg shadow-md active:scale-95 transition-all">
+            Verificar Resposta
+        </button>
+</div>
+<!-- Bottom Navigation (Shared Component Logic - Filtered Out for Task-Focused Screens) -->
+<!-- Suppressed to prioritize the quiz focus according to "The UX Goal" rule -->
+<script>
+        function handleAnswer(element) {
+            // Remove selection from all
+            document.querySelectorAll('.grid button').forEach(btn => {
+                btn.classList.remove('ring-4', 'ring-primary/40', 'scale-[0.98]');
+                btn.classList.add('opacity-70');
+            });
+            
+            // Highlight selected
+            element.classList.add('ring-4', 'ring-primary/40', 'scale-[0.98]');
+            element.classList.remove('opacity-70');
+            
+            // Show check button
+            const action = document.getElementById('check-action');
+            action.classList.remove('translate-y-full');
+            action.classList.add('translate-y-0');
+            
+            // Haptic-like feedback if supported
+            if (window.navigator.vibrate) {
+                window.navigator.vibrate(10);
+            }
+        }
+
+        // Micro-interaction for atmospheric effect (Subtle CASHEW float)
+        document.addEventListener('DOMContentLoaded', () => {
+            const progress = document.getElementById('progress-bar');
+            setTimeout(() => {
+                progress.style.width = '60%';
+            }, 500);
+        });
+    </script>
+</body></html>

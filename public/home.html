@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+
+<html class="light" lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CajuCultura - Home</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&amp;family=Be+Vietnam+Pro:wght@400;600&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-tertiary-fixed": "#20005f",
+                    "secondary-fixed": "#ffdf9e",
+                    "inverse-primary": "#ffb693",
+                    "on-error-container": "#93000a",
+                    "surface-bright": "#f9f9fc",
+                    "surface-container": "#eeeef0",
+                    "surface-variant": "#e2e2e5",
+                    "on-error": "#ffffff",
+                    "error-container": "#ffdad6",
+                    "on-background": "#1a1c1e",
+                    "outline": "#8e7164",
+                    "on-secondary-fixed-variant": "#5b4300",
+                    "background": "#f9f9fc",
+                    "on-tertiary-container": "#380098",
+                    "primary": "#a04100",
+                    "on-primary-fixed": "#351000",
+                    "tertiary": "#6833ea",
+                    "on-primary-container": "#572000",
+                    "outline-variant": "#e2bfb0",
+                    "primary-container": "#ff6b00",
+                    "on-surface": "#1a1c1e",
+                    "inverse-on-surface": "#f0f0f3",
+                    "error": "#ba1a1a",
+                    "on-surface-variant": "#5a4136",
+                    "on-tertiary": "#ffffff",
+                    "secondary": "#785900",
+                    "surface-container-lowest": "#ffffff",
+                    "on-primary-fixed-variant": "#7a3000",
+                    "secondary-fixed-dim": "#fabd00",
+                    "on-primary": "#ffffff",
+                    "primary-fixed-dim": "#ffb693",
+                    "surface-tint": "#a04100",
+                    "surface": "#f9f9fc",
+                    "inverse-surface": "#2f3133",
+                    "primary-fixed": "#ffdbcc",
+                    "on-secondary-fixed": "#261a00",
+                    "surface-dim": "#dadadc",
+                    "tertiary-fixed-dim": "#cdbdff",
+                    "secondary-container": "#fdc003",
+                    "tertiary-fixed": "#e8deff",
+                    "on-secondary-container": "#6c5000",
+                    "on-secondary": "#ffffff",
+                    "surface-container-low": "#f3f3f6",
+                    "tertiary-container": "#a286ff",
+                    "surface-container-highest": "#e2e2e5",
+                    "surface-container-high": "#e8e8ea",
+                    "on-tertiary-fixed-variant": "#4f00d0"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "md": "24px",
+                    "xs": "4px",
+                    "margin-mobile": "16px",
+                    "margin-desktop": "64px",
+                    "lg": "48px",
+                    "base": "8px",
+                    "sm": "12px",
+                    "gutter": "24px",
+                    "xl": "80px"
+            },
+            "fontFamily": {
+                    "headline-lg": ["Plus Jakarta Sans"],
+                    "body-md": ["Be Vietnam Pro"],
+                    "caption": ["Be Vietnam Pro"],
+                    "headline-lg-mobile": ["Plus Jakarta Sans"],
+                    "headline-xl": ["Plus Jakarta Sans"],
+                    "body-lg": ["Be Vietnam Pro"],
+                    "headline-md": ["Plus Jakarta Sans"],
+                    "label-md": ["Be Vietnam Pro"]
+            },
+            "fontSize": {
+                    "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "caption": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "700"}],
+                    "headline-xl": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        /* Subtle xilogravura pattern overlay */
+        .cultural-pattern {
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23a04100' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface font-body-md text-on-surface antialiased selection:bg-primary-container selection:text-on-primary-container">
+<!-- Top Navigation Header (Transformed from JSON) -->
+<header class="bg-primary-container text-on-primary-container pt-12 pb-6 px-margin-mobile rounded-b-[32px] shadow-lg sticky top-0 z-40 transition-all duration-300">
+<div class="flex justify-between items-center mb-6">
+<div class="flex items-center gap-sm">
+<div class="w-12 h-12 rounded-full border-2 border-white overflow-hidden shadow-md">
+<img alt="Profile Avatar" class="w-full h-full object-cover" data-alt="A professional studio portrait of a friendly young man with short dark hair and a warm smile. The background is a soft, solid neutral grey, illuminated by soft-box lighting that creates a modern and clean aesthetic. The visual style is high-end digital photography with vibrant clarity and deep focus, matching a contemporary EdTech brand identity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBcX8W0xJM6LaxWA7NeGQBeKh8ACtzFpotpYd0ddOyp4uvRojnoQGSdatxR0o9Nb5V3R0jN82AGIaQs_40NPN_IzBKMq_wN0wVic3ZVeCYp6nNBqb2wYMUAIT1Z-SHy91ivMQgiDoBYTwGOotQtMaib9VBcxl0wu8N0w3lB-apNQX4KGyju3O-cpjfeaD99XnJRlbhM-1LF9USJMX5Xt9xgwh6XOSQNsV2lPU0_-jn7GbEZfvgLd8yYRLQyIug4ztDCfaX2Bcz1r3dy"/>
+</div>
+<div>
+<span class="font-label-md text-label-md opacity-90 block">Olá, Pedro!</span>
+<span class="font-headline-md text-headline-md font-bold tracking-tight">CajuCultura</span>
+</div>
+</div>
+<div class="flex gap-base">
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-white/20 transition-colors">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-white/20 transition-colors">
+<span class="material-symbols-outlined" data-icon="accessibility">accessibility</span>
+</button>
+</div>
+</div>
+<!-- Search Bar -->
+<div class="relative w-full">
+<input class="w-full h-14 pl-12 pr-4 bg-white/95 backdrop-blur-sm border-none rounded-2xl text-on-surface font-body-md shadow-sm focus:ring-2 focus:ring-secondary-container transition-all placeholder:text-on-surface-variant/60" placeholder="O que vamos aprender hoje?" type="text"/>
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-primary">search</span>
+</div>
+</header>
+<main class="cultural-pattern pb-32 min-h-screen">
+<!-- Friends Section -->
+<section class="mt-8 px-margin-mobile">
+<div class="flex justify-between items-center mb-4">
+<h2 class="font-headline-md text-headline-md text-on-surface">Amigos</h2>
+<button class="text-primary font-label-md text-label-md">Ver todos</button>
+</div>
+<div class="flex gap-md overflow-x-auto hide-scrollbar pb-2">
+<!-- User Profile (Self/Add) -->
+<div class="flex flex-col items-center gap-xs flex-shrink-0">
+<div class="w-16 h-16 rounded-full bg-surface-container-high flex items-center justify-center border-2 border-dashed border-outline-variant hover:border-primary transition-colors cursor-pointer">
+<span class="material-symbols-outlined text-primary" data-icon="add">add</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface-variant">Convidar</span>
+</div>
+<!-- Friends Loop -->
+<div class="flex flex-col items-center gap-xs flex-shrink-0 relative">
+<div class="w-16 h-16 rounded-full border-2 border-secondary-container p-0.5">
+<img class="w-full h-full rounded-full object-cover" data-alt="Close-up portrait of a young woman with curly hair laughing, set against a sun-drenched outdoor background in a Brazilian coastal town. The lighting is warm and golden hour, reflecting a joyful and energetic mood. The image maintains a high-key light mode aesthetic consistent with the vibrant CajuCultura orange and yellow palette." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDUrTxGtL6W4nHl3RTCzuKDaohZQWKmzX4t_6gZNbGzwudayaIDnEXljHVHNzzYUckuGv24ImO_pzOMzllLyxx0_oJKuJeR4GiGLJwpHSwqUWheVKHfAZHIoJRhsTnUri8VIkQXP0NQvHWcuGSuZDvlMrxP0Ej7UVr-xSlXeo6yzg1iiRl6RvzEc5-XFFswQxUtU1v7xGVXXp_DU0ha2plrojdP7t7cwN4WdfImFMlYqAbE2KB9Zzvk5jpvAVCk92yGDGAvD4FF7J4v"/>
+</div>
+<div class="absolute bottom-6 right-1 w-4 h-4 bg-green-500 border-2 border-white rounded-full"></div>
+<span class="font-label-md text-label-md text-on-surface">Maria</span>
+</div>
+<div class="flex flex-col items-center gap-xs flex-shrink-0 relative">
+<div class="w-16 h-16 rounded-full border-2 border-transparent p-0.5">
+<img class="w-full h-full rounded-full object-cover" data-alt="Portrait of a Brazilian man wearing a stylish straw hat, looking at the camera with a confident expression. The setting is a minimalist indoor space with natural light pouring through large windows. The overall feel is modern and grounded in culture, with clean lines and a soft, professional photographic finish." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBaQw3vmvJ2GoPsnNQNkuOu3lbqD_PLnY9MS97LTC3ykVzBKrxZWSET7L1lJDRP7ofsS-8VanQJ5Fa5UvuU0oilWcvhLaua77tc7-plZcrubEImXkSajMi3F7D53SScqfdgYHayF5vg_dDaO7dLiLkFTrwT_at_LRaKMyEZyiPpCGXl2jfPMMluF-J0pf0lMkL5q5IJGhVgnDMzIYaMFvNzIAAAyS9_y-aU5p0pt3RgskvhGtfTIV0Tyd7n1Yia_jrDnde7ArWBTWzA"/>
+</div>
+<div class="absolute bottom-6 right-1 w-4 h-4 bg-green-500 border-2 border-white rounded-full"></div>
+<span class="font-label-md text-label-md text-on-surface">João</span>
+</div>
+<div class="flex flex-col items-center gap-xs flex-shrink-0 relative">
+<div class="w-16 h-16 rounded-full border-2 border-transparent p-0.5">
+<img class="w-full h-full rounded-full object-cover" data-alt="Profile shot of a young student focused on her work, with a soft-focus background of a vibrant community garden. The lighting is soft and airy, emphasizing a light-mode UI design. The color story includes warm earthy tones and soft oranges, consistent with the northeastern cultural theme." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDTgubD-HM6cP5YVPL_UHxh7yEj8vzn7At-UzbWjivVlhmGT4tC2E-oa0om4kMD2Fklb95cvjhukTN3eslBfBjibu9h_KanyzKPuc5GFmCdXadf0Ysy-aY2DwgdgJls7RH9PO97YR5iVtD3HBaR2Ba6IwkPQpcw9wmTu-UEfMi-6ER4qKJK9c0HbZwkW4uG4jWwuwnJTYc41ou_N4UX9bdAbr7i7Iy52-bE6QSGnZRQoabyABw6VO3kw_u84DjAr-YJa7x2v0UmkBb9"/>
+</div>
+<div class="absolute bottom-6 right-1 w-4 h-4 bg-green-500 border-2 border-white rounded-full"></div>
+<span class="font-label-md text-label-md text-on-surface">Ana</span>
+</div>
+<div class="flex flex-col items-center gap-xs flex-shrink-0 relative">
+<div class="w-16 h-16 rounded-full border-2 border-transparent p-0.5">
+<img class="w-full h-full rounded-full object-cover" data-alt="Cheerful portrait of a boy wearing a colorful shirt inspired by regional patterns, smiling broadly. The environment is a brightly lit classroom with modern digital tools visible in the background. The atmosphere is academic yet playful, reflecting the edtech gamified mission with clean, vibrant aesthetics." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD808MYpwRDGdnLUB0Jos2V4dE2qyS9uhop8XFwPAduHjcZdthly2uIw98m4E0TIRMyLE9_Hv8K-1hb2E8H2WbvSBGCQYTsZMc9Zzzm6RVyalROosYBq49wPPhHasllLhJc7J_-tVHv4BacEGYSk4X6J4KK7PBpQRIVZ_7-JPqn_NBHNJb1ijR5o9SzlopfmT04HaZS5RENwaA24h5foHnxtO88yUuCk818FRlaKjBMmwt18DJQ6vkIMsQQkGtMrX75_evg_5ZgNZRc"/>
+</div>
+<div class="absolute bottom-6 right-1 w-4 h-4 bg-green-500 border-2 border-white rounded-full"></div>
+<span class="font-label-md text-label-md text-on-surface">Carlos</span>
+</div>
+</div>
+</section>
+<!-- Educational Games Section -->
+<section class="mt-10 px-margin-mobile">
+<h2 class="font-headline-md text-headline-md text-on-surface mb-6">Jogos Educativos</h2>
+<div class="grid grid-cols-1 gap-md">
+<!-- Quiz Card -->
+<div class="group relative bg-secondary-container rounded-[28px] p-6 h-48 overflow-hidden shadow-sm hover:shadow-md transition-all active:scale-95 duration-200 cursor-pointer">
+<div class="flex flex-col justify-between h-full relative z-10">
+<div>
+<div class="w-12 h-12 bg-white rounded-2xl flex items-center justify-center mb-4 shadow-sm">
+<span class="material-symbols-outlined text-secondary text-3xl" data-icon="lightbulb" style="font-variation-settings: 'FILL' 1;">lightbulb</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-secondary-container">Quiz Cultural</h3>
+<p class="font-body-md text-body-md text-on-secondary-container/80">Teste seus conhecimentos</p>
+</div>
+</div>
+<!-- Decorative Element -->
+<span class="material-symbols-outlined absolute -right-4 -bottom-4 text-[120px] text-white/20 rotate-12" data-icon="quiz">quiz</span>
+</div>
+<!-- Swipe Card -->
+<div class="group relative bg-tertiary-container rounded-[28px] p-6 h-48 overflow-hidden shadow-sm hover:shadow-md transition-all active:scale-95 duration-200 cursor-pointer">
+<div class="flex flex-col justify-between h-full relative z-10">
+<div>
+<div class="w-12 h-12 bg-white rounded-2xl flex items-center justify-center mb-4 shadow-sm">
+<span class="material-symbols-outlined text-tertiary text-3xl" data-icon="swipe" style="font-variation-settings: 'FILL' 1;">swipe</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-tertiary-container">Swipe de Cordel</h3>
+<p class="font-body-md text-body-md text-on-tertiary-container/80">Decida rápido, ganhe mais!</p>
+</div>
+</div>
+<span class="material-symbols-outlined absolute -right-4 -bottom-4 text-[120px] text-white/20 -rotate-12" data-icon="auto_awesome_motion">auto_awesome_motion</span>
+</div>
+<!-- Memory Card -->
+<div class="group relative bg-primary-container rounded-[28px] p-6 h-48 overflow-hidden shadow-sm hover:shadow-md transition-all active:scale-95 duration-200 cursor-pointer">
+<div class="flex flex-col justify-between h-full relative z-10">
+<div>
+<div class="w-12 h-12 bg-white rounded-2xl flex items-center justify-center mb-4 shadow-sm">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="grid_view" style="font-variation-settings: 'FILL' 1;">grid_view</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-primary">Jogo da Memória</h3>
+<p class="font-body-md text-body-md text-on-primary/80">Encontre os pares típicos</p>
+</div>
+</div>
+<span class="material-symbols-outlined absolute -right-4 -bottom-4 text-[120px] text-white/20" data-icon="extension">extension</span>
+</div>
+</div>
+</section>
+<!-- Weekly Challenge -->
+<section class="mt-10 px-margin-mobile">
+<div class="bg-surface-container-highest rounded-[32px] p-6 border border-outline-variant">
+<div class="flex items-center gap-md mb-4">
+<div class="w-14 h-14 bg-secondary-container rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-on-secondary-container text-2xl" data-icon="emoji_events" style="font-variation-settings: 'FILL' 1;">emoji_events</span>
+</div>
+<div>
+<h4 class="font-label-md text-label-md text-primary uppercase">Desafio da Semana</h4>
+<p class="font-headline-md text-headline-md text-on-surface">Mestre da Xilogravura</p>
+</div>
+</div>
+<div class="w-full bg-surface-container-low h-3 rounded-full overflow-hidden mb-2">
+<div class="bg-primary h-full w-[65%] rounded-full"></div>
+</div>
+<div class="flex justify-between items-center">
+<span class="font-caption text-caption text-on-surface-variant">650 / 1000 Pontos</span>
+<button class="bg-primary text-on-primary px-6 py-2 rounded-full font-label-md text-label-md shadow-sm hover:brightness-110 active:scale-95 transition-all">Continuar</button>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation Bar (Execution from JSON) -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-margin-mobile pb-8 pt-4 bg-surface/90 backdrop-blur-md shadow-[0px_-4px_16px_rgba(26,28,30,0.08)] rounded-t-[32px]">
+<!-- Home Item (Active) -->
+<a class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-full px-6 py-1 transition-all duration-200 scale-95" href="#">
+<span class="material-symbols-outlined" data-icon="home" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="font-label-md text-label-md mt-1">Home</span>
+</a>
+<!-- Ranking Item -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-variant/50 transition-all rounded-full p-2" href="#">
+<span class="material-symbols-outlined" data-icon="emoji_events">emoji_events</span>
+<span class="font-label-md text-label-md mt-1">Ranking</span>
+</a>
+<!-- Profile Item -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-variant/50 transition-all rounded-full p-2" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-label-md text-label-md mt-1">Profile</span>
+</a>
+</nav>
+<script>
+        // Simple Interaction logic for card feedback
+        document.querySelectorAll('.cursor-pointer').forEach(card => {
+            card.addEventListener('mousedown', () => card.style.transform = 'scale(0.96)');
+            card.addEventListener('mouseup', () => card.style.transform = 'scale(1)');
+            card.addEventListener('mouseleave', () => card.style.transform = 'scale(1)');
+        });
+
+        // Hide header on scroll down, show on scroll up
+        let lastScrollTop = 0;
+        const header = document.querySelector('header');
+        window.addEventListener('scroll', () => {
+            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            if (scrollTop > lastScrollTop && scrollTop > 100) {
+                header.classList.add('-translate-y-4');
+                header.classList.add('shadow-md');
+            } else {
+                header.classList.remove('-translate-y-4');
+            }
+            lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+        }, false);
+    </script>
+</body></html>
